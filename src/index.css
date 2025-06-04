@@ -33,7 +33,10 @@ body {
 header {
     font-weight: 600;
     font-size: 24px;
+    position: relative;
 }
+
+
 
 header .presentation {
     margin: 50px 0;
@@ -63,6 +66,152 @@ header ul.nav li {
 header ul.nav li:hover {
     opacity: 0.8;
     background: rgba(255, 255, 255, 0.1);
+}
+
+header .basket-icon{
+    float: right;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+header .basket-icon:hover,
+header .basket-icon.active {
+    color: rgba(102, 126, 234, 1);
+    transform: scale(1.2);
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Корзина(это тоже header) */
+
+header .shop-cart{
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 400px;
+    max-height: 500px;
+    overflow-y: auto;
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    padding: 25px;
+    animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+header .shop-cart::before {
+    content: '';
+    position: absolute;
+    top: -8px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ffffff;
+}
+
+header .shop-cart::after {
+    content: '';
+    position: absolute;
+    top: -9px;
+    right: 20px;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #e0e0e0;
+}
+
+header .shop-cart .cart-total {
+    border-top: 1px solid rgba(224, 224, 224, 0.5);
+    padding-top: 20px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+header .shop-cart .total-price {
+    font-size: 20px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+header .shop-cart .purchase-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 25px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    font-family: 'Roboto', sans-serif;
+}
+
+header .shop-cart .purchase-btn:hover {
+    background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+header .shop-cart .purchase-btn:active {
+    transform: translateY(0);
+}
+
+header .shop-cart .empty + .cart-total {
+    display: none;
+}
+
+header .shop-cart .empty h2{
+    font-size: 24px;
+}
+
+header .shop-cart .empty p{
+    font-size: 18px;
+    color: rgba(127, 140, 141, 0.8);
+    margin-top: 10px;
+    font-weight: 400;
+}
+
+header .shop-cart .item{
+    width: 100%; 
+    float: left;
+    margin-bottom: 20px;
+}
+
+header .shop-cart .item img {
+    border: 1px solid rgba(224, 224, 224, 1);
+    width: 80px;
+    height: 80px;
+    float: left;
+    border-radius: 10px;
+    margin-right: 20px;
+}
+
+header .shop-cart .item h2{
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+header .shop-cart .item span{
+    color: rgba(46, 204, 113, 0.9);
+    font-weight: 700;
+    font-size: 18px;
 }
 
 /* Слайдер(это тоже header) */
