@@ -14,3 +14,5 @@ In the project directory, you can find https://galmart.kz's products, images and
 
 ### All products are fake and the site does not support payment and delivery of goods.
 
+### Only products are copied. The website design, code structure, and the code itself are protected by copyright.
+
