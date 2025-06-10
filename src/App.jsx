@@ -2,12 +2,14 @@ import React from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Items from "./components/Items";
+import Categories from "./components/Categories";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       orders: [],
+      currentItems: [],
       items: [
         {
           id: 1,
@@ -67,7 +69,7 @@ class App extends React.Component {
         },
         {
           id: 8,
-          title: "Чай",
+          title: "Чай Greenfield Ассам, 25 пак.",
           price: 1055,
           img: "tea.jpg",
           desc: "Чай из высококачественных листьев, собранных вручную.",
@@ -75,25 +77,435 @@ class App extends React.Component {
         },
         {
           id: 9,
-          title: "Шоколад",
+          title: "Шоколад Казахстанский",
           price: 900,
           img: "chocolate.jpeg",
           desc: "Темный шоколад с высоким содержанием какао.",
           category: "Сладости",
         },
+        {
+          id: 10,
+          title: "Сыр Ламбер 50%, 230 г",
+          price: 1980,
+          img: "cheese.jpg",
+          desc: "Натуральный сыр, изготовленный по традиционным рецептам.",
+          category: "Молочные продукты",
+        },
+        {
+          id: 11,
+          title: "Масло сливочное President 82%, 400 г",
+          price: 3885,
+          img: "butter.jpg",
+          desc: "Качественное сливочное масло, идеально подходит для выпечки.",
+          category: "Масло",
+        },
+        {
+          id: 12,
+          title: "Рис Мистраль басмати , 500 г",
+          price: 1200,
+          img: "rice.jpg",
+          desc: "Ароматный рис басмати, идеально подходит для гарниров.",
+          category: "Зерновые продукты",
+        },
+        {
+          id: 13,
+          title: "Курица охлажденная, 1 кг",
+          price: 3200,
+          img: "chicken.jpg",
+          desc: "Свежая курица, выращенная без антибиотиков.",
+          category: "Яйца и мясо",
+        },
+        {
+          id: 14,
+          title: "Картофель, 1 кг",
+          price: 430,
+          img: "potato.jpg",
+          desc: "Свежий картофель, идеален для приготовления различных блюд.",
+          category: "Овощи",
+        },
+        {
+          id: 15,
+          title: "Колбаса Докторская, 500 г",
+          price: 1200,
+          img: "sausage.jpg",
+          desc: "Классическая докторская колбаса, изготовленная из натуральных ингредиентов.",
+          category: "Колбасы и мясные деликатесы",
+        },
+        {
+          id: 16,
+          title: "Яблоки Гренни Смит, 1 кг",
+          price: 800,
+          img: "apples.jpg",
+          desc: "Сочные и хрустящие яблоки, идеально подходят для перекуса.",
+          category: "Фрукты",
+        },
+        {
+          id: 17,
+          title: "Морковь, 1 кг",
+          price: 400,
+          img: "carrot.jpg",
+          desc: "Свежая морковь, богатая витаминами и минералами.",
+          category: "Овощи",
+        },
+        {
+          id: 18,
+          title: "Печенье Орео, 154 г",
+          price: 600,
+          img: "oreo.jpg",
+          desc: "Популярное печенье с кремовой начинкой.",
+          category: "Сладости",
+        },
+        {
+          id: 19,
+          title: "Кукуруза консервированная, Bonduelle, 340 г",
+          price: 550,
+          img: "corn.jpg",
+          desc: "Консервированная кукуруза, готовая к употреблению.",
+          category: "Консервация",
+        },
+        {
+          id: 20,
+          title: "Гречка Ярмарка, 900 г",
+          price: 860,
+          img: "buckwheat.jpg",
+          desc: "Полезная гречневая крупа, богатая клетчаткой.",
+          category: "Зерновые продукты",
+        },
+        {
+          id: 21,
+          title: "Масло оливковое Ege bal 250мл",
+          price: 3770,
+          img: "olive_oil.jpg",
+          desc: "Высококачественное оливковое масло первого отжима.",
+          category: "Масло",
+        },
+        {
+          id: 22,
+          title: "Пицца La Bottega Маргарита, замороженная, 400 г",
+          price: 2200,
+          img: "pizza.jpg",
+          desc: "Вкусная пицца с томатным соусом и сыром.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 23,
+          title: "Сок Апельсиновый Primo, 200мл",
+          price: 600,
+          img: "orange_juice.png",
+          desc: "Освежающий апельсиновый сок без добавления сахара.",
+          category: "Напитки",
+        },
+        {
+          id: 24,
+          title: "Чипсы Лейс, 150 г",
+          price: 600,
+          img: "chips_onion.jpg",
+          desc: "Хрустящие, рифленные картофельные чипсы со вкусом лука.",
+          category: "Закуски",
+        },
+        {
+          id: 25,
+          title: "Паста томатная Томастер, 200 г",
+          price: 540,
+          img: "tomato_paste.jpg",
+          desc: "Натуральная томатная паста, идеальна для соусов и супов.",
+          category: "Соусы и приправы",
+        },
+        {
+          id: 26,
+          title: "Мед Столичный майский, 430 г",
+          price: 2270,
+          img: "honey.jpg",
+          desc: "Ароматный мед, собранный с цветущих лугов.",
+          category: "Сладости",
+        },
+        {
+          id: 27,
+          title: "Кетчуп Heinz, 320 г",
+          price: 800,
+          img: "ketchup.jpg",
+          desc: "Популярный кетчуп с насыщенным вкусом.",
+          category: "Соусы и приправы",
+        },
+        {
+          id: 28,
+          title: "Соль Аралтұз йодированная, 1 кг",
+          price: 100,
+          img: "salt.jpg",
+          desc: "Обычная поваренная соль, необходимая в каждом доме.",
+          category: "Специи",
+        },
+        {
+          id: 29,
+          title: "Перец черный Эстетика Вкуса молотый, 36 г",
+          price: 1670,
+          img: "black_pepper.jpg",
+          desc: "Ароматный черный перец, добавит пикантности вашим блюдам.",
+          category: "Специи",
+        },
+        {
+          id: 30,
+          title: "Лук репчатый, 1 кг",
+          price: 300,
+          img: "onion.jpg",
+          desc: "Свежий репчатый лук, необходимый для многих блюд.",
+          category: "Овощи",
+        },
+        {
+          id: 31,
+          title: "Творог President Домашний 5%, 450 г",
+          price: 1070,
+          img: "cottage_cheeseъ.jpg",
+          desc: "Нежный творог, богатый кальцием и белком.",
+          category: "Молочные продукты",
+        },
+        {
+          id: 32,
+          title: "Пельмени Бижан говяжьи, 450 г",
+          price: 1500,
+          img: "dumplings.jpg",
+          desc: "Вкусные пельмени с мясной начинкой, готовые к варке.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 33,
+          title: "Квашеная капуста, 500 г",
+          price: 400,
+          img: "sauerkraut.jpeg",
+          desc: "Полезная квашеная капуста, богатая витаминами.",
+          category: "Закуски",
+        },
+        {
+          id: 34,
+          title: "Сахар-песок Отличная Кухня, 500 г",
+          price: 550,
+          img: "sugar.jpg",
+          desc: "Обычный сахар-песок, необходимый для выпечки и напитков.",
+          category: "Сладости",
+        },
+        {
+          id: 35,
+          title: "Горчица 3 Желания Заправская 130г",
+          price: 250,
+          img: "mustard.jpg",
+          desc: "Острая горчица, отлично подходит к мясным блюдам.",
+          category: "Соусы и приправы",
+        },
+        {
+          id: 36,
+          title: "Куриные крылышки, 1 кг",
+          price: 2800,
+          img: "chicken_wings.jpg",
+          desc: "Вкусные куриные крылышки, идеально подходят для запекания.",
+          category: "Яйца и мясо",
+        },
+        {
+          id: 37,
+          title: "Бананы, 1 кг",
+          price: 1000,
+          img: "bananas.jpg",
+          desc: "Сладкие бананы, богатые калием и витаминами.",
+          category: "Фрукты",
+        },
+        {
+          id: 38,
+          title: "Пицца La Bottega с тунцом, 400 г",
+          price: 2900,
+          img:  "fish_pizza.jpg",
+          desc: "Вкусная пицца с тунцом и сыром.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 39,
+          title: "Гранола Sante Granola с шоколадом, 350 г",
+          price: 2500,
+          img: "corn_flakes.jpg",
+          desc: "Хрустящие кукурузные хлопья для завтрака.",
+          category: "Закуски",
+        },
+        {
+          id: 40,
+          title: "Томатный сок, 750 мл",
+          price: 1400,
+          img: "tomato_juice.jpg",
+          desc: "Освежающий томатный сок без добавления сахара.",
+          category: "Напитки",
+        },
+        {
+          id: 41,
+          title: "Печенье курабье goMART",
+          price: 990,
+          img: "sandwich_cookies.png",
+          desc: "Вкусное песочное печенье с начинкой.",
+          category: "Сладости",
+        },
+        {
+          id: 42,
+          title: "Наггетсы Willma куриные классические, замороженные, 300 г",
+          price: 800,
+          img: "chicken_nuggets.jpg",
+          desc: "Хрустящие куриные наггетсы, готовые к жарке.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 43,
+          title: "Салат Оливье, готовый",
+          price: 1200,
+          img: "olivie_salas.jpg",
+          desc: "Вкусный салат  с курицей овощами.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 44,
+          title: "Картофельное пюре с котлетой, 400 г",
+          price: 1400,
+          img: "mashed_potatoes.jpg",
+          desc: "Готовое картофельное пюре, быстрое в приготовлении.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 45,
+          title: "Куриные бедра  Кус вкус, 1 кг",
+          price: 1900,
+          img: "chicken_thighs.jpg",
+          desc: "Сочные куриные бедра, идеально подходят для запекания.",
+          category: "Яйца и мясо",
+        },
+        {
+          id: 46,
+          title: "Груша Конференц, 1 кг",
+          price: 2300,
+          img: "pears.jpg",
+          desc: "Сладкие груши, богатые витаминами и минералами.",
+          category: "Фрукты",
+        },
+        {
+          id: 47,
+          title: "Пирожки с мясом",
+          price: 210,
+          img: "meat_pies.jpg",
+          desc: "Вкусные пирожки с мясной начинкой, готовые к выпечке.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 48,
+          title: "Капуста белокочанная, 1 кг",
+          price: 540,
+          img: "cabbage.jpg",
+          desc: "Свежая белокочанная капуста, необходимая для салатов и гарниров.",
+          category: "Овощи",
+        },
+        {
+          id: 49,
+          title: "Пицца La Bottega грибная, 400 г",
+          price: 2400,
+          img: "mashroom_pizza.jpeg",
+          desc: "Вкусная пицца с грибами.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 50,
+          title: "Куриные филе, 1 кг",
+          price: 2200,
+          img: "chicken_breast.png",
+          desc: "Нежное куриное филе, идеально подходит для жарки и запекания.",
+          category: "Яйца и мясо",
+        },
+        {
+          id: 51,
+          title: "Клубника",
+          price: 1200,
+          img: "strawberries.jpg",
+          desc: "Сладкая клубника, идеально подходит для десертов.",
+          category: "Фрукты",
+        },
+        {
+          id: 52,
+          title: "Пирог клубничный, 1000 г",
+          price: 5850,
+          img:  "strawberry_pie.jpg",
+          desc: "Вкусный клубничный пирог, готовый к употреблению.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 53,
+          title: "Котлеты Sarqyt куриные замороженные 300г",
+          price: 2700,
+          img: "chicken_cutlets.jpg",
+          desc: "Вкусные куриные котлеты, готовые к жарке.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 54,
+          title: "Свекла, 1 кг",
+          price: 138,
+          img: "beetroot.jpg",
+          desc: "Свежая свекла, богатая витаминами и минералами.",
+          category: "Овощи",
+        },
+        {
+          id: 55,
+          title: "Пицца La Bottega 4 Сыра, замороженная, 400 г",
+          price: 2500,
+          img: "four_cheeses_pizza..png",
+          desc: "Вкусная пицца с четырьмя видами сыра.",
+          category: "Готовые блюда",
+        },
+        {
+          id: 56,
+          title: "Тунец Celeste для салатов натуральный, 185 г",
+          price: 800,
+          img: "tuna.jpg",
+          desc: "Консервированный тунец, готовая к употреблению.",
+          category: "Консервация",
+        },
+        {
+          id: 57,
+          title: "Булочка творожник galmart",
+          price: 330,
+          img: "buns.jpg",
+          desc: "Вкусная булочка с творожной начинкой, идеально подходит к чаю.",
+          category: "Выпечка",
+        },
+        {
+          id: 58,
+          title: "Макароны Султан спираль, 400 г,",
+          price: 810,
+          img: "macaroni.jpg",
+          desc: "Макароны из твердых сортов пшеницы, идеально подходят для приготовления различных блюд.",
+          category: "Макаронные изделия",
+        },
+
       ],
     };
+    this.state.currentItems = this.state.items;
     this.addToCart = this.addToCart.bind(this);
+    this.deleteFromCart = this.deleteFromCart.bind(this);
+    this.chooseCategory = this.chooseCategory.bind(this);
   }
 
   render() {
     return (
       <div className="wrapper">
-        <Header orders={this.state.orders} />
-        <Items items={this.state.items} onAdd={this.addToCart} />
+        <Header orders={this.state.orders} onDelete={this.deleteFromCart} />
+        <Categories chooseCategory={this.chooseCategory}/>
+        <Items items={this.state.currentItems} onAdd={this.addToCart} />
         <Footer />
       </div>
     );
+  }
+
+  chooseCategory(category) {
+    this.setState({
+      currentItems: this.state.items.filter((el) => el.category === category),
+    });
+    if (category === "Все товары") {
+      this.setState({ currentItems: this.state.items });
+    }
+  }
+
+  deleteFromCart(id) {
+    this.setState({ orders: this.state.orders.filter((el) => el.id !== id) });
   }
 
   addToCart(item) {
@@ -101,8 +513,8 @@ class App extends React.Component {
     this.state.orders.forEach((el) => {
       if (el.id === item.id) isInCart = true;
     });
-    if(!isInCart) {
-          this.setState({ orders: [...this.state.orders, item] });
+    if (!isInCart) {
+      this.setState({ orders: [...this.state.orders, item] });
     }
   }
 }

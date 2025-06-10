@@ -12,7 +12,7 @@ const showOrders = (props) => {
   return (
     <div>
       {props.orders.map((el) => (
-        <Order key={el.id} item={el} />
+        <Order key={el.id} item={el} onDelete={props.onDelete} />
       ))}
     </div>
   );
