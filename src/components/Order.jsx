@@ -1,17 +1,26 @@
-import React, { Component } from "react";
-import { FaTrash } from "react-icons/fa";
+import React from 'react';
+import { Trash2 } from 'lucide-react';
 
-export class Order extends Component {
-  render() {
-    return (
-      <div className="item">
-        <img src={"./img/" + this.props.item.img} alt={this.props.item.title} />
-        <h2>{this.props.item.title}</h2>
-        <span className="price">{this.props.item.price} ₸</span>
-        <FaTrash className="delete-icon" onClick={() => this.props.onDelete(this.props.item.id)}/>
-      </div>
-    );
-  }
-}
+const Order = ({ item, onDelete }) => {
+  const handleDelete = () => {
+    onDelete(item.id);
+  };
+
+  return (
+    <div className="item">
+      <img 
+        src={`./img/${item.img}`} 
+        alt={item.title} 
+      />
+      <h2>{item.title}</h2>
+      <span className="price">{item.price} ₸</span>
+      <Trash2 
+        className="delete-icon" 
+        onClick={handleDelete}
+        size={16}
+      />
+    </div>
+  );
+};
 
 export default Order;

@@ -1,22 +1,21 @@
-import { Component } from "react";
+import React from "react";
 
-class Item extends Component {
-  render() {
-    return (
-      <div className="item">
-        <img src={"./img/" + this.props.item.img} alt={this.props.item.title} />
-        <h2>{this.props.item.title}</h2>
-        <p>{this.props.item.desc}</p>
-        <span className="price">{this.props.item.price} ₸</span>
-        <div
-          className="add-to-cart"
-          onClick={() => this.props.onAdd(this.props.item)}
-        >
-          +
-        </div>
+const Item = ({ item, onAdd }) => {
+  const handleAddToCart = () => {
+    onAdd(item);
+  };
+
+  return (
+    <div className="item">
+      <img src={`./img/${item.img}`} alt={item.title} />
+      <h2>{item.title}</h2>
+      <p>{item.desc}</p>
+      <span className="price">{item.price} ₸</span>
+      <div className="add-to-cart" onClick={handleAddToCart}>
+        +
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 export default Item;

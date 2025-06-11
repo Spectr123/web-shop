@@ -1,37 +1,57 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay } from "swiper/modules";
-import { FaShoppingBasket } from "react-icons/fa";
+import { ShoppingBasket } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import Order from "./Order";
 
-const showOrders = (props) => {
+const OrdersList = ({ orders, onDelete }) => {
   return (
     <div>
-      {props.orders.map((el) => (
-        <Order key={el.id} item={el} onDelete={props.onDelete} />
+      {orders.map((el) => (
+        <Order key={el.id} item={el} onDelete={onDelete} />
       ))}
     </div>
   );
 };
 
-const showNothing = () => {
-  return(
+const EmptyCart = () => {
+  return (
     <div className="empty">
       <h2>Корзина пуста</h2>
       <p>Добавьте товары в корзину, чтобы увидеть их здесь.</p>
     </div>
-  )
-}
+  );
+};
 
-export default function Header(props) {
-  let [cartOpen, setCartOpen] = useState(false);
+const CartTotal = ({ totalPrice, onPurchase }) => {
+  return (
+    <div className="cart-total">
+      <div className="total-price">
+        <strong>Общая сумма: {totalPrice} ₸</strong>
+      </div>
+      <button className="purchase-btn" onClick={onPurchase}>
+        Купить
+      </button>
+    </div>
+  );
+};
+
+const Header = ({ orders, onDelete }) => {
+  const [cartOpen, setCartOpen] = useState(false);
 
   const getTotalPrice = () => {
-    return props.orders.reduce((total, item) => total + item.price, 0);
+    return orders.reduce((total, item) => total + item.price, 0);
+  };
+
+  const toggleCart = () => {
+    setCartOpen(prev => !prev);
+  };
+
+  const handlePurchase = () => {
+    alert("Спасибо за покупку!");
   };
 
   return (
@@ -43,23 +63,24 @@ export default function Header(props) {
           <li>Контакты</li>
           <li>Работа</li>
         </ul>
-        <FaShoppingBasket
-          onClick={() => setCartOpen((cartOpen = !cartOpen))}
+        <ShoppingBasket
+          onClick={toggleCart}
           className={`basket-icon ${cartOpen && "active"}`}
+          size={20}
         />
         {cartOpen && (
           <div className="shop-cart">
-            {props.orders.length > 0 ? showOrders(props) : showNothing()}
-            <>
-              <div className="cart-total">
-                  <div className="total-price">
-                    <strong>Общая сумма: {getTotalPrice()} ₸</strong>
-                  </div>
-                  <button className="purchase-btn" onClick={() => alert("Спасибо за покупку!")}>
-                    Купить
-                  </button>
-                </div>
-            </>
+            {orders.length > 0 ? (
+              <>
+                <OrdersList orders={orders} onDelete={onDelete} />
+                <CartTotal 
+                  totalPrice={getTotalPrice()} 
+                  onPurchase={handlePurchase} 
+                />
+              </>
+            ) : (
+              <EmptyCart />
+            )}
           </div>
         )}
       </div>
@@ -93,4 +114,6 @@ export default function Header(props) {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

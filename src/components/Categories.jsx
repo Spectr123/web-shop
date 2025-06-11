@@ -23,6 +23,7 @@ export class Categories extends Component {
         {key: 13, name: "Специи" },
         {key: 14, name: "Готовые блюда" },
         {key: 15, name: "Зерновые продукты" },
+        {key: 16, name: "Колбасы и мясные деликатесы" },
       ],
     };
   }
