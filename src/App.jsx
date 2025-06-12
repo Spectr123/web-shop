@@ -526,7 +526,7 @@ const App = () => {
     if (selectedCategory === "Все товары") {
       return items;
     }
-    return items.filter(item => item.category === selectedCategory);
+    return items.filter((item) => item.category === selectedCategory);
   }, [items, selectedCategory]);
 
   const chooseCategory = useCallback((category) => {
@@ -534,19 +534,64 @@ const App = () => {
   }, []);
 
   const deleteFromCart = useCallback((id) => {
-    setOrders(prevOrders => prevOrders.filter(order => order.id !== id));
+    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
+  }, []);
+
+  const decreaseQuantity = useCallback((id) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === id
+          ? { ...order, quantity: Math.max(1, order.quantity - 1) }
+          : order
+      )
+    );
+  }, []);
+
+  const increaseQuantity = useCallback((id) => {
+    setOrders((prevOrders) =>
+      prevOrders.map((order) =>
+        order.id === id ? { ...order, quantity: order.quantity + 1 } : order
+      )
+    );
   }, []);
 
   const addToCart = useCallback((item) => {
-    setOrders(prevOrders => {
-      const isInCart = prevOrders.some(order => order.id === item.id);
-      return isInCart ? prevOrders : [...prevOrders, item];
+    setOrders((prevOrders) => {
+      const existingOrder = prevOrders.find((order) => order.id === item.id);
+
+      if (existingOrder) {
+        return prevOrders.map((order) =>
+          order.id === item.id
+            ? { ...order, quantity: order.quantity + 1 }
+            : order
+        );
+      } else {
+        return [...prevOrders, { ...item, quantity: 1 }];
+      }
     });
   }, []);
 
+  const getTotalPrice = useCallback(() => {
+    return orders.reduce(
+      (total, order) => total + order.price * order.quantity,
+      0
+    );
+  }, [orders]);
+
+  const getTotalItems = useCallback(() => {
+    return orders.reduce((total, order) => total + order.quantity, 0);
+  }, [orders]);
+
   return (
     <div className="wrapper">
-      <Header orders={orders} onDelete={deleteFromCart} />
+      <Header
+        orders={orders}
+        onDelete={deleteFromCart}
+        onIncrease={increaseQuantity}
+        onDecrease={decreaseQuantity}
+        totalPrice={getTotalPrice()}
+        totalItems={getTotalItems()}
+      />
       <Categories chooseCategory={chooseCategory} />
       <Items items={currentItems} onAdd={addToCart} />
       <Footer />

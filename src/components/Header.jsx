@@ -7,11 +7,17 @@ import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import Order from "./Order";
 
-const OrdersList = ({ orders, onDelete }) => {
+const OrdersList = ({ orders, onDelete, onIncrease, onDecrease }) => {
   return (
     <div>
       {orders.map((el) => (
-        <Order key={el.id} item={el} onDelete={onDelete} />
+        <Order 
+          key={el.id} 
+          item={el} 
+          onDelete={onDelete}
+          onIncrease={onIncrease}
+          onDecrease={onDecrease}
+        />
       ))}
     </div>
   );
@@ -26,11 +32,16 @@ const EmptyCart = () => {
   );
 };
 
-const CartTotal = ({ totalPrice, onPurchase }) => {
+const CartTotal = ({ totalPrice, totalItems, onPurchase }) => {
   return (
     <div className="cart-total">
-      <div className="total-price">
-        <strong>Общая сумма: {totalPrice} ₸</strong>
+      <div className="total-info">
+        <div className="total-items">
+          Товаров: {totalItems} шт.
+        </div>
+        <div className="total-price">
+          <strong>Общая сумма: {totalPrice} ₸</strong>
+        </div>
       </div>
       <button className="purchase-btn" onClick={onPurchase}>
         Купить
@@ -39,11 +50,15 @@ const CartTotal = ({ totalPrice, onPurchase }) => {
   );
 };
 
-const Header = ({ orders, onDelete }) => {
+const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
   const [cartOpen, setCartOpen] = useState(false);
 
   const getTotalPrice = () => {
-    return orders.reduce((total, item) => total + item.price, 0);
+    return orders.reduce((total, item) => total + (item.price * item.quantity), 0);
+  };
+
+  const getTotalItems = () => {
+    return orders.reduce((total, item) => total + item.quantity, 0);
   };
 
   const toggleCart = () => {
@@ -51,8 +66,20 @@ const Header = ({ orders, onDelete }) => {
   };
 
   const handlePurchase = () => {
-    alert("Спасибо за покупку!");
+    if (orders.length === 0) {
+      alert("Корзина пуста!");
+      return;
+    }
+    
+    const totalPrice = getTotalPrice();
+    const totalItems = getTotalItems();
+    
+    alert(`Спасибо за покупку!\nТоваров: ${totalItems} шт.\nСумма: ${totalPrice} ₸`);
+    orders.forEach(order => onDelete(order.id));
+    setCartOpen(false);
   };
+
+  const totalItemsCount = getTotalItems();
 
   return (
     <header>
@@ -63,19 +90,33 @@ const Header = ({ orders, onDelete }) => {
           <li>Контакты</li>
           <li>Работа</li>
         </ul>
-        <ShoppingBasket
-          onClick={toggleCart}
-          className={`basket-icon ${cartOpen && "active"}`}
-          size={20}
-        />
+        <div className="basket-icon-container">
+          <ShoppingBasket
+            onClick={toggleCart}
+            className={`basket-icon ${cartOpen && "active"}`}
+            size={20}
+          />
+          {totalItemsCount > 0 && (
+            <span className="cart-badge">{totalItemsCount}</span>
+          )}
+        </div>
         {cartOpen && (
           <div className="shop-cart">
             {orders.length > 0 ? (
               <>
-                <OrdersList orders={orders} onDelete={onDelete} />
-                <CartTotal 
-                  totalPrice={getTotalPrice()} 
-                  onPurchase={handlePurchase} 
+                <div className="cart-header">
+                  <h3>Корзина ({totalItemsCount})</h3>
+                </div>
+                <OrdersList 
+                  orders={orders} 
+                  onDelete={onDelete}
+                  onIncrease={onIncrease}
+                  onDecrease={onDecrease}
+                />
+                <CartTotal
+                  totalPrice={getTotalPrice()}
+                  totalItems={totalItemsCount}
+                  onPurchase={handlePurchase}
                 />
               </>
             ) : (
