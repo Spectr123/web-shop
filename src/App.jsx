@@ -555,18 +555,18 @@ const App = () => {
     );
   }, []);
 
-  const addToCart = useCallback((item) => {
+  const addToCart = useCallback((item, quantity = 1) => {
     setOrders((prevOrders) => {
       const existingOrder = prevOrders.find((order) => order.id === item.id);
 
       if (existingOrder) {
         return prevOrders.map((order) =>
           order.id === item.id
-            ? { ...order, quantity: order.quantity + 1 }
+            ? { ...order, quantity: order.quantity + quantity }
             : order
         );
       } else {
-        return [...prevOrders, { ...item, quantity: 1 }];
+        return [...prevOrders, { ...item, quantity: quantity }];
       }
     });
   }, []);
