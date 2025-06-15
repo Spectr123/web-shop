@@ -6,6 +6,7 @@ export class Categories extends Component {
     super(props);
     this.state = {
       activeCategory: null,
+      isExpanded: false,
       categories: [
         { key: 0, name: "Все товары" },
         { key: 1, name: "Выпечка" },
@@ -28,6 +29,27 @@ export class Categories extends Component {
     };
   }
 
+  componentDidMount() {
+    window.addEventListener("resize", this.handleResize);
+    this.handleResize();
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+  }
+
+  handleResize = () => {
+    if (window.innerWidth > 768) {
+      this.setState({ isExpanded: false });
+    }
+  };
+
+  toggleCategories = () => {
+    this.setState((prevState) => ({
+      isExpanded: !prevState.isExpanded,
+    }));
+  };
+
   render() {
     return (
       <div className="categories">
@@ -36,6 +58,7 @@ export class Categories extends Component {
             key={el.key}
             className={clsx("category", {
               active: this.state.activeCategory === el.name,
+              show: this.state.isExpanded,
             })}
             onClick={() => {
               this.setState({ activeCategory: el.name });
@@ -45,6 +68,14 @@ export class Categories extends Component {
             <span>{el.name}</span>
           </div>
         ))}
+        <button
+          className={clsx("show-more-btn", {
+            expanded: this.state.isExpanded,
+          })}
+          onClick={this.toggleCategories}
+        >
+          {this.state.isExpanded ? "Скрыть" : "Показать все"}
+        </button>
       </div>
     );
   }

@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Keyboard, Autoplay } from "swiper/modules";
-import { ShoppingBasket } from "lucide-react";
+import { ShoppingBasket, X } from "lucide-react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
@@ -11,9 +11,9 @@ const OrdersList = ({ orders, onDelete, onIncrease, onDecrease }) => {
   return (
     <div>
       {orders.map((el) => (
-        <Order 
-          key={el.id} 
-          item={el} 
+        <Order
+          key={el.id}
+          item={el}
           onDelete={onDelete}
           onIncrease={onIncrease}
           onDecrease={onDecrease}
@@ -36,9 +36,7 @@ const CartTotal = ({ totalPrice, totalItems, onPurchase }) => {
   return (
     <div className="cart-total">
       <div className="total-info">
-        <div className="total-items">
-          Товаров: {totalItems} шт.
-        </div>
+        <div className="total-items">Товаров: {totalItems} шт.</div>
         <div className="total-price">
           <strong>Общая сумма: {totalPrice} ₸</strong>
         </div>
@@ -52,9 +50,22 @@ const CartTotal = ({ totalPrice, totalItems, onPurchase }) => {
 
 const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
   const [cartOpen, setCartOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth <= 425);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth <= 425);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const getTotalPrice = () => {
-    return orders.reduce((total, item) => total + (item.price * item.quantity), 0);
+    return orders.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    );
   };
 
   const getTotalItems = () => {
@@ -62,7 +73,7 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
   };
 
   const toggleCart = () => {
-    setCartOpen(prev => !prev);
+    setCartOpen((prev) => !prev);
   };
 
   const handlePurchase = () => {
@@ -70,12 +81,14 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
       alert("Корзина пуста!");
       return;
     }
-    
+
     const totalPrice = getTotalPrice();
     const totalItems = getTotalItems();
-    
-    alert(`Спасибо за покупку!\nТоваров: ${totalItems} шт.\nСумма: ${totalPrice} ₸`);
-    orders.forEach(order => onDelete(order.id));
+
+    alert(
+      `Спасибо за покупку!\nТоваров: ${totalItems} шт.\nСумма: ${totalPrice} ₸`
+    );
+    orders.forEach((order) => onDelete(order.id));
     setCartOpen(false);
   };
 
@@ -100,59 +113,67 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
             <span className="cart-badge">{totalItemsCount}</span>
           )}
         </div>
+
+        {cartOpen && <div className="shop-cart-overlay" onClick={toggleCart} />}
+
         {cartOpen && (
           <div className="shop-cart">
-            {orders.length > 0 ? (
-              <>
-                <div className="cart-header">
-                  <h3>Корзина ({totalItemsCount})</h3>
-                </div>
-                <OrdersList 
-                  orders={orders} 
+            <button className="close-btn" onClick={toggleCart}>
+              <X size={24} />
+            </button>
+            <div className="shop-cart-items">
+              {orders.length > 0 ? (
+                <OrdersList
+                  orders={orders}
                   onDelete={onDelete}
                   onIncrease={onIncrease}
                   onDecrease={onDecrease}
                 />
-                <CartTotal
-                  totalPrice={getTotalPrice()}
-                  totalItems={totalItemsCount}
-                  onPurchase={handlePurchase}
-                />
-              </>
-            ) : (
-              <EmptyCart />
-            )}
+              ) : (
+                <EmptyCart />
+              )}
+            </div>
+            <CartTotal
+              totalPrice={getTotalPrice()}
+              totalItems={totalItemsCount}
+              onPurchase={handlePurchase}
+            />
           </div>
         )}
       </div>
-      <div className="presentation">
-        <Swiper
-          modules={[Navigation, Keyboard, Autoplay]}
-          navigation={true}
-          loop={true}
-          autoplay={{
-            delay: 4000,
-            disableOnInteraction: false,
-          }}
-          mousewheel={true}
-          keyboard={{
-            enabled: true,
-          }}
-          spaceBetween={0}
-          slidesPerView={1}
-          className="presentation-slider"
-        >
-          <SwiperSlide>
-            <img src="./img/bg.png" alt="Shop Item 1" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./img/bg2.jpg" alt="Shop Item 2" />
-          </SwiperSlide>
-          <SwiperSlide>
-            <img src="./img/bg3.jpg" alt="Shop Item 3" />
-          </SwiperSlide>
-        </Swiper>
-      </div>
+      {!isMobile && (
+        <div className="presentation">
+          <Swiper
+            modules={[Navigation, Keyboard, Autoplay]}
+            navigation={true}
+            loop={false}
+            autoplay={{
+              delay: 4000,
+              disableOnInteraction: false,
+            }}
+            mousewheel={true}
+            keyboard={{
+              enabled: true,
+            }}
+            spaceBetween={0}
+            slidesPerView={1}
+            slidesPerGroup={1}
+            className="presentation-slider"
+            loopAdditionalSlides={0}
+            rewind={true}
+          >
+            <SwiperSlide>
+              <img src="./img/bg.png" alt="Shop Item 1" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./img/bg2.jpg" alt="Shop Item 2" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./img/bg3.jpg" alt="Shop Item 3" />
+            </SwiperSlide>
+          </Swiper>
+        </div>
+      )}
     </header>
   );
 };
