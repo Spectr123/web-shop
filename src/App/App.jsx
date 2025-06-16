@@ -1,10 +1,10 @@
 import React, { useState, useCallback, useMemo, useRef } from "react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Header from "./components/Header";
-import Footer from "./components/Footer";
-import Items from "./components/Items";
-import Categories from "./components/Categories";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Items from "../components/Items";
+import Categories from "../components/Categories";
 
 const App = () => {
   const [orders, setOrders] = useState([]);

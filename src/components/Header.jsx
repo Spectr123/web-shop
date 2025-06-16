@@ -103,9 +103,8 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
           <li>Контакты</li>
           <li>Работа</li>
         </ul>
-        <div className="basket-icon-container">
+        <div className="basket-icon-container" onClick={toggleCart}>
           <ShoppingBasket
-            onClick={toggleCart}
             className={`basket-icon ${cartOpen && "active"}`}
             size={20}
           />
@@ -118,9 +117,6 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
 
         {cartOpen && (
           <div className="shop-cart">
-            <button className="close-btn" onClick={toggleCart}>
-              <X size={24} />
-            </button>
             <div className="shop-cart-items">
               {orders.length > 0 ? (
                 <OrdersList
@@ -170,6 +166,9 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
             </SwiperSlide>
             <SwiperSlide>
               <img src="./img/bg3.jpg" alt="Shop Item 3" />
+            </SwiperSlide>
+            <SwiperSlide>
+              <img src="./img/bg4.png " alt="Shop Item 4" />
             </SwiperSlide>
           </Swiper>
         </div>

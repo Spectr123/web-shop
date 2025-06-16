@@ -73,28 +73,42 @@ header ul.nav li:hover {
 /*     Корзина     */
 
 .basket-icon-container {
-    float: right;
-    position: relative;
-    margin-top: 5px;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1001;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 50%;
+    padding: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    width: 46px;
+    height: 46px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.basket-icon-container:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 header .basket-icon {
     width: 30px;
     height: 25px;
-    cursor: pointer;
     transition: all 0.3s ease;
-}
-
-header .basket-icon:hover,
-header .basket-icon.active {
-    color: rgba(102, 126, 234, 1);
-    transform: scale(1.1);
+    display: block;
+    margin: auto;
 }
 
 .cart-badge {
     position: absolute;
     top: -8px;
     right: -8px;
+    z-index: 1002;
+    pointer-events: none;
     background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
     color: white;
     border-radius: 50%;
@@ -130,12 +144,12 @@ header .basket-icon.active {
 }
 
 header .shop-cart {
-    position: absolute;
-    top: 50px;
-    right: 0;
+    position: fixed;
+    top: 80px;
+    right: 20px;
     width: 420px;
     max-width: 90vw;
-    max-height: 500px;
+    max-height: calc(100vh - 300px);
     overflow-y: auto;
     background: #ffffff;
     border: 1px solid rgba(224, 224, 224, 0.3);
@@ -724,141 +738,15 @@ footer {
     }
 
     .basket-icon-container {
-        float: none;
-        position: absolute;
-        top: 10px;
-        right: 0;
-    }
-
-    .presentation {
-        height: 300px;
-        margin: 30px 0;
-    }
-
-    .swiper .swiper-button-next,
-    .swiper .swiper-button-prev {
-        width: 40px;
-        height: 40px;
-        margin-top: -25px;
-    }
-
-    .categories {
-        text-align: left;
-    }
-
-    .categories div {
-        display: inline-block;
-        margin-right: 10px;
-        margin-bottom: 15px;
-        padding: 8px 16px;
-        font-size: 14px;
-    }
-
-    .categories div:nth-child(n+5) {
-        display: none;
-    }
-
-    .categories div:nth-child(n+5).show {
-        display: inline-block;
-    }
-
-    .show-more-btn {
-        display: inline-block;
-    }
-
-    .show-more-btn.expanded::after {
-        content: ' ▲';
-    }
-
-    .show-more-btn:not(.expanded)::after {
-        content: ' ▼';
-    }
-
-    header .shop-cart {
-        width: 350px;
-        max-height: 400px;
-        right: -15px;
-    }
-
-    header .shop-cart::before {
-        right: 30px;
-    }
-
-    header .shop-cart .item {
-        padding: 15px 20px;
-    }
-
-    header .shop-cart .item img {
-        width: 60px;
-        height: 60px;
-        margin-right: 12px;
-    }
-
-    .cart-header {
-        padding: 15px 20px 12px;
-    }
-
-    .cart-header h3 {
-        font-size: 16px;
-    }
-
-    main {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 20px;
-    }
-
-    main .item {
-        min-height: 380px;
-    }
-
-    main .item img {
-        height: 180px;
-    }
-
-    main h2 {
-        margin: 12px 20px 8px 20px;
-        font-size: 1.2em;
-    }
-
-    main p {
-        margin: 0 20px 12px 20px;
-        font-size: 0.9em;
-    }
-
-    main span {
-        margin: 0 20px 12px 20px;
-        font-size: 1.2em;
-    }
-
-    .item-quantity-controls {
-        margin: 0 20px 15px 20px;
-        gap: 6px;
+        top: 15px;
+        right: 15px;
         padding: 8px;
     }
 
-    .item-quantity-btn {
-        width: 28px;
-        height: 28px;
-        font-size: 14px;
-    }
-
-    .item-quantity-input {
-        width: 50px;
-        height: 28px;
-        font-size: 13px;
-    }
-
-    main .add-to-cart {
-        right: 20px;
-        bottom: 20px;
-        width: 40px;
-        height: 40px;
-        font-size: 1.1em;
-    }
-
-    footer {
-        margin: 30px 0;
-        padding: 20px;
+    header .shop-cart {
+        top: 60px;
+        right: 15px;
+        max-height: calc(100vh - 450px);
     }
 }
 
