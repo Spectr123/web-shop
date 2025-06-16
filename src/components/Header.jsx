@@ -1,98 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Keyboard, Autoplay } from "swiper/modules";
-import { ShoppingBasket, X } from "lucide-react";
+import { useState } from "react";
+import { ShoppingBasket } from "lucide-react";
+import ClearBasket from "./Basket/ClearBasket";
+import OrdersList from "./Basket/OrdersList";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
-import Order from "./Order";
-
-const OrdersList = ({ orders, onDelete, onIncrease, onDecrease }) => {
-  return (
-    <div>
-      {orders.map((el) => (
-        <Order
-          key={el.id}
-          item={el}
-          onDelete={onDelete}
-          onIncrease={onIncrease}
-          onDecrease={onDecrease}
-        />
-      ))}
-    </div>
-  );
-};
-
-const EmptyCart = () => {
-  return (
-    <div className="empty">
-      <h2>Корзина пуста</h2>
-      <p>Добавьте товары в корзину, чтобы увидеть их здесь.</p>
-    </div>
-  );
-};
-
-const CartTotal = ({ totalPrice, totalItems, onPurchase }) => {
-  return (
-    <div className="cart-total">
-      <div className="total-info">
-        <div className="total-items">Товаров: {totalItems} шт.</div>
-        <div className="total-price">
-          <strong>Общая сумма: {totalPrice} ₸</strong>
-        </div>
-      </div>
-      <button className="purchase-btn" onClick={onPurchase}>
-        Купить
-      </button>
-    </div>
-  );
-};
+import EmptyCart from "./Basket/EmptyCart";
+import CartTotal from "./Basket/CartTotal";
+import useCart from "./Hooks/useCart";
+import useMobile from "./Hooks/useMobile";
+import useClickOutside from "./Hooks/useClickOutSide";
+import PresentationSlider from "./PresentationSlider";
 
 const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
   const [cartOpen, setCartOpen] = useState(false);
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 425);
+  const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 425);
-    };
+  const isMobile = useMobile();
+  const { cartRef, cartIconRef } = useClickOutside(cartOpen, setCartOpen);
+  const { totalPrice, totalItems, handlePurchase, clearAllItems } = useCart(
+    orders,
+    onDelete
+  );
 
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const toggleCart = () => setCartOpen((prev) => !prev);
 
-  const getTotalPrice = () => {
-    return orders.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    );
-  };
-
-  const getTotalItems = () => {
-    return orders.reduce((total, item) => total + item.quantity, 0);
-  };
-
-  const toggleCart = () => {
-    setCartOpen((prev) => !prev);
-  };
-
-  const handlePurchase = () => {
+  const handleClearCart = () => {
     if (orders.length === 0) {
-      alert("Корзина пуста!");
+      alert("Корзина уже пуста!");
       return;
     }
-
-    const totalPrice = getTotalPrice();
-    const totalItems = getTotalItems();
-
-    alert(
-      `Спасибо за покупку!\nТоваров: ${totalItems} шт.\nСумма: ${totalPrice} ₸`
-    );
-    orders.forEach((order) => onDelete(order.id));
-    setCartOpen(false);
+    setIsConfirmModalOpen(true);
   };
 
-  const totalItemsCount = getTotalItems();
+  const confirmClearCart = () => {
+    clearAllItems();
+    setIsConfirmModalOpen(false);
+  };
+
+  const handlePurchaseClick = () => {
+    handlePurchase();
+    setCartOpen(false);
+  };
 
   return (
     <header>
@@ -103,20 +52,23 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
           <li>Контакты</li>
           <li>Работа</li>
         </ul>
-        <div className="basket-icon-container" onClick={toggleCart}>
+
+        <div
+          className="basket-icon-container"
+          onClick={toggleCart}
+          ref={cartIconRef}
+        >
           <ShoppingBasket
-            className={`basket-icon ${cartOpen && "active"}`}
+            className={`basket-icon ${cartOpen ? "active" : ""}`}
             size={20}
           />
-          {totalItemsCount > 0 && (
-            <span className="cart-badge">{totalItemsCount}</span>
-          )}
+          {totalItems > 0 && <span className="cart-badge">{totalItems}</span>}
         </div>
 
         {cartOpen && <div className="shop-cart-overlay" onClick={toggleCart} />}
 
         {cartOpen && (
-          <div className="shop-cart">
+          <div className="shop-cart" ref={cartRef}>
             <div className="shop-cart-items">
               {orders.length > 0 ? (
                 <OrdersList
@@ -130,49 +82,23 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
               )}
             </div>
             <CartTotal
-              totalPrice={getTotalPrice()}
-              totalItems={totalItemsCount}
-              onPurchase={handlePurchase}
+              totalPrice={totalPrice}
+              totalItems={totalItems}
+              onPurchase={handlePurchaseClick}
+              onClearCart={handleClearCart}
             />
           </div>
         )}
       </div>
-      {!isMobile && (
-        <div className="presentation">
-          <Swiper
-            modules={[Navigation, Keyboard, Autoplay]}
-            navigation={true}
-            loop={false}
-            autoplay={{
-              delay: 4000,
-              disableOnInteraction: false,
-            }}
-            mousewheel={true}
-            keyboard={{
-              enabled: true,
-            }}
-            spaceBetween={0}
-            slidesPerView={1}
-            slidesPerGroup={1}
-            className="presentation-slider"
-            loopAdditionalSlides={0}
-            rewind={true}
-          >
-            <SwiperSlide>
-              <img src="./img/bg.png" alt="Shop Item 1" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="./img/bg2.jpg" alt="Shop Item 2" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="./img/bg3.jpg" alt="Shop Item 3" />
-            </SwiperSlide>
-            <SwiperSlide>
-              <img src="./img/bg4.png " alt="Shop Item 4" />
-            </SwiperSlide>
-          </Swiper>
-        </div>
-      )}
+
+      <ClearBasket
+        isOpen={isConfirmModalOpen}
+        onClose={() => setIsConfirmModalOpen(false)}
+        onConfirm={confirmClearCart}
+        message="Все товары будут удалены из корзины. Вы уверены, что хотите продолжить?"
+      />
+
+      {!isMobile && <PresentationSlider />}
     </header>
   );
 };

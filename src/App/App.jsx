@@ -644,7 +644,7 @@ const App = () => {
             : ` ${item.title} добавлен(а) в корзину`,
           {
             position: "bottom-right",
-            autoClose: 1700,
+            autoClose: 1500,
           }
         );
         lastToastTimestamp.current = now;

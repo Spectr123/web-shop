@@ -1,84 +1,103 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 
-export class Categories extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      activeCategory: null,
-      isExpanded: false,
-      categories: [
-        { key: 0, name: "Все товары" },
-        { key: 1, name: "Выпечка" },
-        { key: 2, name: "Молочные продукты" },
-        { key: 3, name: "Закуски" },
-        { key: 4, name: "Яйца и мясо" },
-        { key: 5, name: "Овощи" },
-        { key: 6, name: "Макаронные изделия" },
-        { key: 7, name: "Напитки" },
-        { key: 8, name: "Фрукты" },
-        { key: 10, name: "Консервация" },
-        { key: 11, name: "Масло" },
-        { key: 12, name: "Сладости" },
-        { key: 13, name: "Специи" },
-        { key: 14, name: "Готовые блюда" },
-        { key: 15, name: "Зерновые продукты" },
-        { key: 16, name: "Соусы и приправы" },
-        { key: 17, name: "Колбасы и мясные деликатесы" },
-      ],
+const CATEGORIES = [
+  { key: 0, name: "Все товары" },
+  { key: 1, name: "Выпечка" },
+  { key: 2, name: "Молочные продукты" },
+  { key: 3, name: "Закуски" },
+  { key: 4, name: "Яйца и мясо" },
+  { key: 5, name: "Овощи" },
+  { key: 6, name: "Макаронные изделия" },
+  { key: 7, name: "Напитки" },
+  { key: 8, name: "Фрукты" },
+  { key: 10, name: "Консервация" },
+  { key: 11, name: "Масло" },
+  { key: 12, name: "Сладости" },
+  { key: 13, name: "Специи" },
+  { key: 14, name: "Готовые блюда" },
+  { key: 15, name: "Зерновые продукты" },
+  { key: 16, name: "Соусы и приправы" },
+  { key: 17, name: "Колбасы и мясные деликатесы" },
+];
+
+const DESKTOP_BREAKPOINT = 768;
+
+const useResponsive = () => {
+  const [isDesktop, setIsDesktop] = useState(window.innerWidth > DESKTOP_BREAKPOINT);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const desktop = window.innerWidth > DESKTOP_BREAKPOINT;
+      setIsDesktop(desktop);
     };
-  }
 
-  componentDidMount() {
-    window.addEventListener("resize", this.handleResize);
-    this.handleResize();
-  }
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
-  componentWillUnmount() {
-    window.removeEventListener("resize", this.handleResize);
-  }
+  return isDesktop;
+};
 
-  handleResize = () => {
-    if (window.innerWidth > 768) {
-      this.setState({ isExpanded: false });
+const CategoryItem = ({ category, isActive, isExpanded, onClick }) => (
+  <div
+    className={clsx("category", { 
+      active: isActive,
+      show: isExpanded 
+    })}
+    onClick={() => onClick(category.name)}
+  >
+    <span>{category.name}</span>
+  </div>
+);
+
+const ToggleButton = ({ isExpanded, onClick }) => (
+  <button
+    className={clsx("show-more-btn", { expanded: isExpanded })}
+    onClick={onClick}
+  >
+    {isExpanded ? "Скрыть" : "Показать все"}
+  </button>
+);
+
+const Categories = ({ chooseCategory }) => {
+  const [activeCategory, setActiveCategory] = useState(null);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const isDesktop = useResponsive();
+
+  useEffect(() => {
+    if (isDesktop) {
+      setIsExpanded(false);
     }
+  }, [isDesktop]);
+
+  const handleCategoryClick = (categoryName) => {
+    setActiveCategory(categoryName);
+    chooseCategory(categoryName);
   };
 
-  toggleCategories = () => {
-    this.setState((prevState) => ({
-      isExpanded: !prevState.isExpanded,
-    }));
+  const toggleCategories = () => {
+    setIsExpanded(prev => !prev);
   };
 
-  render() {
-    return (
-      <div className="categories">
-        {this.state.categories.map((el) => (
-          <div
-            key={el.key}
-            className={clsx("category", {
-              active: this.state.activeCategory === el.name,
-              show: this.state.isExpanded,
-            })}
-            onClick={() => {
-              this.setState({ activeCategory: el.name });
-              this.props.chooseCategory(el.name);
-            }}
-          >
-            <span>{el.name}</span>
-          </div>
-        ))}
-        <button
-          className={clsx("show-more-btn", {
-            expanded: this.state.isExpanded,
-          })}
-          onClick={this.toggleCategories}
-        >
-          {this.state.isExpanded ? "Скрыть" : "Показать все"}
-        </button>
-      </div>
-    );
-  }
-}
+  return (
+    <div className="categories">
+      {CATEGORIES.map(category => (
+        <CategoryItem
+          key={category.key}
+          category={category}
+          isActive={activeCategory === category.name}
+          isExpanded={isExpanded}
+          onClick={handleCategoryClick}
+        />
+      ))}
+      
+      <ToggleButton 
+        isExpanded={isExpanded} 
+        onClick={toggleCategories} 
+      />
+    </div>
+  );
+};
 
 export default Categories;
