@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Items from "../components/Items";
 import Categories from "../components/Categories";
+import SearchBar from "../components/SearchBar";
 
 const App = () => {
   const [orders, setOrders] = useState([]);
@@ -595,15 +596,30 @@ const App = () => {
       category: "Специи",
     }
   ]);
+  // const [items] = useState([]); 
   const [selectedCategory, setSelectedCategory] = useState("Все товары");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  // Функция для фильтрации товаров по категории
+  // Функция для фильтрации товаров по категории и поиску
   const filterItemsByCategory = useMemo(() => {
-    if (selectedCategory === "Все товары") {
-      return items;
+    let filteredItems = items;
+    
+    // Если есть поисковый запрос, ищем по всем товарам независимо от категории
+    if (searchQuery.trim()) {
+      const query = searchQuery.toLowerCase().trim();
+      return items.filter((item) =>
+        item.title.toLowerCase().includes(query) ||
+        item.category.toLowerCase().includes(query)
+      );
     }
-    return items.filter((item) => item.category === selectedCategory);
-  }, [items, selectedCategory]);
+    
+    // Если поискового запроса нет, фильтруем только по категории
+    if (selectedCategory !== "Все товары") {
+      filteredItems = filteredItems.filter((item) => item.category === selectedCategory);
+    }
+    
+    return filteredItems;
+  }, [items, selectedCategory, searchQuery]);
 
   // Функция для выбора категории
   const handleCategorySelection = useCallback((category) => {
@@ -673,6 +689,11 @@ const App = () => {
     return orders.reduce((total, order) => total + order.quantity, 0);
   }, [orders]);
 
+  // Функция для обработки поиска
+  const handleSearch = useCallback((query) => {
+    setSearchQuery(query);
+  }, []);
+
   return (
     <div className="wrapper">
       <Header
@@ -684,6 +705,7 @@ const App = () => {
         totalItems={calculateTotalItems()}
       />
       <Categories chooseCategory={handleCategorySelection} />
+      <SearchBar onSearch={handleSearch} />
       <Items items={filterItemsByCategory} onAdd={addItemToCart} />
       <Footer />
       <ToastContainer newestOnTop />

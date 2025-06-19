@@ -486,6 +486,74 @@ header .shop-cart .clear-cart-btn:hover {
     font-weight: bold;
 }
 
+/* Search Bar */
+.search-container {
+    margin: 30px 0 20px;
+    width: 100%;
+}
+
+.search-input-wrapper {
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.search-icon {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(102, 126, 234, 0.7);
+    font-size: 18px;
+}
+
+.search-input {
+    width: 100%;
+    padding: 15px 50px 15px 50px;
+    border-radius: 50px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    background: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+    color: #2c3e50;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    font-family: 'Roboto', sans-serif;
+}
+
+.search-input:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.7);
+    box-shadow: 0 4px 20px rgba(102, 126, 234, 0.2);
+}
+
+.search-input::placeholder {
+    color: rgba(127, 140, 141, 0.7);
+}
+
+.search-clear-btn {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    color: rgba(127, 140, 141, 0.7);
+    font-size: 24px;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+.search-clear-btn:hover {
+    background: rgba(127, 140, 141, 0.1);
+    color: rgba(127, 140, 141, 1);
+}
+
 /* Categories */
 .categories {
     margin: 30px 0;
@@ -548,6 +616,27 @@ main {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     width: 100%;
+}
+
+.no-results {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 50px 20px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    margin: 20px 0;
+}
+
+.no-results h2 {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+}
+
+.no-results p {
+    font-size: 16px;
+    color: #7f8c8d;
 }
 
 /* Kарточкa товара */
@@ -901,6 +990,20 @@ footer {
 
     header {
         margin-bottom: 20px;
+    }
+    
+    .search-container {
+        margin: 20px 0 15px;
+    }
+    
+    .search-input {
+        padding: 12px 40px 12px 40px;
+        font-size: 14px;
+    }
+    
+    .search-icon {
+        left: 15px;
+        font-size: 16px;
     }
 
     header .logo {

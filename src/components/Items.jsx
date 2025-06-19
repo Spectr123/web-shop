@@ -4,9 +4,16 @@ import Item from "./Item";
 const Items = ({ items, onAdd }) => {
   return (
     <main>
-      {items.map((el) => (
-        <Item item={el} key={el.id} onAdd={onAdd} />
-      ))}
+      {items.length > 0 ? (
+        items.map((el) => (
+          <Item item={el} key={el.id} onAdd={onAdd} />
+        ))
+      ) : (
+        <div className="no-results">
+          <h2>Товары не найдены</h2>
+          <p>Попробуйте изменить параметры поиска</p>
+        </div>
+      )}
     </main>
   );
 };
