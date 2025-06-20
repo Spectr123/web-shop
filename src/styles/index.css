@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
 
-/* Общее */
-
 * {
     margin: 0;
     padding: 0;
@@ -10,7 +8,7 @@
 }
 
 body {
-    background: #F5F5F5;    
+    background: #F5F5F5;
     color: rgba(0, 0, 0, 0.8);
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -23,13 +21,10 @@ body {
     padding: 0 20px;
 }
 
-/* header */
-
 header {
     font-weight: 600;
     font-size: 24px;
     position: relative;
-    
 }
 
 header .logo {
@@ -40,6 +35,7 @@ header .logo {
     transition: color 0.3s ease;
     margin-bottom: 25px;
 }
+
 header .logo a {
     text-decoration: none;
     color: rgba(44, 62, 80, 1);
@@ -74,14 +70,12 @@ header ul.nav li a {
     text-decoration: none;
     color: rgba(44, 62, 80, 1);
     font-weight: 500;
-}  
+}
 
 header ul.nav li:hover {
     opacity: 0.8;
-    background: rgba(255, 255, 255, 0.7)
+    background: rgba(255, 255, 255, 0.7);
 }
-
-/*     Корзина     */
 
 .basket-icon-container {
     position: fixed;
@@ -384,7 +378,7 @@ header .shop-cart .total-price {
     text-align: center;
 }
 
-header .shop-cart .total-items{
+header .shop-cart .total-items {
     font-size: 18px;
     text-align: center;
 }
@@ -442,8 +436,6 @@ header .shop-cart .clear-cart-btn:hover {
     color: white;
 }
 
-/* Слайдер(это тоже header) */
-
 .presentation {
     position: relative;
     margin: 50px 0;
@@ -497,12 +489,6 @@ header .shop-cart .clear-cart-btn:hover {
     font-weight: bold;
 }
 
-/* HEADER 2 */
-
-
-
-
-/* Search Bar */
 .search-container {
     margin: 30px 0 20px;
     width: 100%;
@@ -570,7 +556,6 @@ header .shop-cart .clear-cart-btn:hover {
     color: rgba(127, 140, 141, 1);
 }
 
-/* Categories */
 .categories {
     margin: 30px 0;
     position: relative;
@@ -590,7 +575,7 @@ header .shop-cart .clear-cart-btn:hover {
     font-weight: 500;
 }
 
-.categories div:hover, 
+.categories div:hover,
 .categories div.active {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
     color: rgba(255, 255, 255, 1);
@@ -624,8 +609,6 @@ header .shop-cart .clear-cart-btn:hover {
     transform: scale(0.98);
 }
 
-/* Основной контент */
-
 main {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -653,8 +636,6 @@ main {
     font-size: 16px;
     color: #7f8c8d;
 }
-
-/* Kарточкa товара */
 
 main .item {
     background: #ffffff;
@@ -823,8 +804,6 @@ main .add-to-cart:active {
     transform: scale(0.95);
 }
 
-/* Footer */
-
 footer {
     text-align: center;
     margin: 50px 0;
@@ -834,7 +813,6 @@ footer {
     backdrop-filter: blur(10px);
 }
 
-/* Модальное окно */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -940,19 +918,15 @@ footer {
 }
 
 @keyframes slideUp {
-    from { 
+    from {
         opacity: 0;
         transform: translateY(20px);
     }
-    to { 
+    to {
         opacity: 1;
         transform: translateY(0);
     }
 }
-
-/* ========================================
-   АДАПТИВНЫЕ СТИЛИ
-======================================== */
 
 @media (max-width: 768px) {
     .wrapper {
@@ -1006,16 +980,16 @@ footer {
     header {
         margin-bottom: 20px;
     }
-    
+
     .search-container {
         margin: 20px 0 15px;
     }
-    
+
     .search-input {
         padding: 12px 40px 12px 40px;
         font-size: 14px;
     }
-    
+
     .search-icon {
         left: 15px;
         font-size: 16px;
@@ -1385,10 +1359,6 @@ footer {
     }
 }
 
-/* ========================================
-   СТРАНИЦА "О НАС"
-======================================== */
-
 .about-us-content {
     display: block;
     max-width: 900px;
@@ -1491,52 +1461,206 @@ footer {
     margin: 0;
 }
 
+.contact-content {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 75px 20px;
+}
+
+.contact-hero {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.contact-hero h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-hero p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.contact-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.contact-card {
+    text-align: center;
+    padding: 40px 30px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+    backdrop-filter: blur(10px);
+}
+
+.contact-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(102, 126, 234, 0.15);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.contact-icon {
+    font-size: 3em;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.contact-card h3 {
+    font-size: 1.4em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-card p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.6;
+    margin: 0;
+}
+
+.contact-card a {
+    color: rgba(102, 126, 234, 0.8);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.contact-card a:hover {
+    color: rgba(102, 126, 234, 1);
+    text-decoration: underline;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 10px 20px;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border: 1px solid rgba(102, 126, 234, 0.2);
+    border-radius: 25px;
+    color: rgba(102, 126, 234, 0.8);
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    font-size: 0.9em;
+}
+
+.social-link:hover {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
+    color: white;
+    border-color: transparent;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
 @media (max-width: 768px) {
     .about-us-content {
         padding: 0 15px;
     }
-    
+
     .about-hero {
         padding: 40px 20px;
         margin-bottom: 30px;
     }
-    
+
     .about-hero h1 {
         font-size: 2em;
     }
-    
+
     .about-hero p {
         font-size: 1.1em;
     }
-    
+
     .about-section {
         padding: 30px 20px;
         margin-bottom: 30px;
     }
-    
+
     .about-section h2 {
         font-size: 1.5em;
     }
-    
+
     .about-section p {
         font-size: 1em;
     }
-    
+
     .features-grid {
         grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .feature-card {
         padding: 25px 15px;
     }
-    
+
     .feature-icon {
         font-size: 2.5em;
     }
-    
+
     .feature-card h3 {
         font-size: 1.2em;
+    }
+
+    .contact-content {
+        padding: 0 15px;
+    }
+
+    .contact-hero {
+        padding: 40px 20px;
+        margin-bottom: 30px;
+    }
+
+    .contact-hero h1 {
+        font-size: 2em;
+    }
+
+    .contact-hero p {
+        font-size: 1.1em;
+    }
+
+    .contact-info {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .contact-card {
+        padding: 30px 20px;
+    }
+
+    .contact-icon {
+        font-size: 2.5em;
+    }
+
+    .contact-card h3 {
+        font-size: 1.2em;
+    }
+
+    .contact-card p {
+        font-size: 1em;
     }
 }
 
@@ -1544,36 +1668,73 @@ footer {
     .about-hero {
         padding: 30px 15px;
     }
-    
+
     .about-hero h1 {
         font-size: 1.8em;
     }
-    
+
     .about-hero p {
         font-size: 1em;
     }
-    
+
     .about-section {
         padding: 25px 15px;
     }
-    
+
     .about-section h2 {
         font-size: 1.4em;
     }
-    
+
     .feature-card {
         padding: 20px 15px;
     }
-    
+
     .feature-icon {
         font-size: 2.2em;
     }
-    
+
     .feature-card h3 {
         font-size: 1.1em;
     }
-    
+
     .feature-card p {
         font-size: 0.9em;
+    }
+
+    .contact-hero {
+        padding: 30px 15px;
+    }
+
+    .contact-hero h1 {
+        font-size: 1.8em;
+    }
+
+    .contact-hero p {
+        font-size: 1em;
+    }
+
+    .contact-card {
+        padding: 25px 15px;
+    }
+
+    .contact-icon {
+        font-size: 2.2em;
+    }
+
+    .contact-card h3 {
+        font-size: 1.1em;
+    }
+
+    .contact-card p {
+        font-size: 0.9em;
+    }
+
+    .social-links {
+        gap: 10px;
+    }
+
+    .social-link {
+        padding: 8px 15px;
+        font-size: 0.8em;
     }
 }
