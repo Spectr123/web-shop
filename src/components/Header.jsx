@@ -11,6 +11,7 @@ import useCart from "./Hooks/useCart";
 import useMobile from "./Hooks/useMobile";
 import useClickOutside from "./Hooks/useClickOutSide";
 import PresentationSlider from "./PresentationSlider";
+import { Link } from "react-router-dom";
 
 const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
   const [cartOpen, setCartOpen] = useState(false);
@@ -48,9 +49,9 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
       <div>
         <span className="logo">goMART 2.0</span>
         <ul className="nav">
-          <li>О нас</li>
-          <li>Контакты</li>
-          <li>Работа</li>
+          <li><Link to="/AboutUsPage">О нас</Link></li>                   
+          <li><Link to="/ContactPage">Контакты</Link></li>
+          <li><Link to="/WorkPage">Работа</Link></li>
         </ul>
 
         <div

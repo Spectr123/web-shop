@@ -10,7 +10,7 @@
 }
 
 body {
-    background: linear-gradient(135deg, rgba(245, 247, 250, 1) 0%, rgba(195, 207, 226, 1) 100%);
+    background: #F5F5F5;    
     color: rgba(0, 0, 0, 0.8);
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
@@ -29,6 +29,7 @@ header {
     font-weight: 600;
     font-size: 24px;
     position: relative;
+    
 }
 
 header .logo {
@@ -38,6 +39,10 @@ header .logo {
     text-decoration: none;
     transition: color 0.3s ease;
     margin-bottom: 25px;
+}
+header .logo a {
+    text-decoration: none;
+    color: rgba(44, 62, 80, 1);
 }
 
 header .presentation {
@@ -64,6 +69,12 @@ header ul.nav li {
     padding: 5px 10px;
     border-radius: 5px;
 }
+
+header ul.nav li a {
+    text-decoration: none;
+    color: rgba(44, 62, 80, 1);
+    font-weight: 500;
+}  
 
 header ul.nav li:hover {
     opacity: 0.8;
@@ -486,6 +497,11 @@ header .shop-cart .clear-cart-btn:hover {
     font-weight: bold;
 }
 
+/* HEADER 2 */
+
+
+
+
 /* Search Bar */
 .search-container {
     margin: 30px 0 20px;
@@ -583,7 +599,6 @@ header .shop-cart .clear-cart-btn:hover {
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
 }
 
-/* Кнопка "Показать все/Скрыть" */
 .show-more-btn {
     display: none;
     background: rgba(255, 255, 255, 0.9);
@@ -1367,5 +1382,198 @@ footer {
 
     .categories div:nth-child(n+3).show {
         display: inline-block;
+    }
+}
+
+/* ========================================
+   СТРАНИЦА "О НАС"
+======================================== */
+
+.about-us-content {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 75px 20px;
+}
+
+.about-hero {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.about-hero h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.about-hero p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.about-section {
+    margin-bottom: 50px;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+}
+
+.about-section h2 {
+    font-size: 1.8em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    color: #555;
+    line-height: 1.7;
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.feature-card {
+    text-align: center;
+    padding: 30px 20px;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(102, 126, 234, 0.2);
+    border-color: rgba(102, 126, 234, 0.3);
+}
+
+.feature-icon {
+    font-size: 3em;
+    margin-bottom: 15px;
+    display: block;
+}
+
+.feature-card h3 {
+    font-size: 1.3em;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.feature-card p {
+    font-size: 1em;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .about-us-content {
+        padding: 0 15px;
+    }
+    
+    .about-hero {
+        padding: 40px 20px;
+        margin-bottom: 30px;
+    }
+    
+    .about-hero h1 {
+        font-size: 2em;
+    }
+    
+    .about-hero p {
+        font-size: 1.1em;
+    }
+    
+    .about-section {
+        padding: 30px 20px;
+        margin-bottom: 30px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.5em;
+    }
+    
+    .about-section p {
+        font-size: 1em;
+    }
+    
+    .features-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .feature-card {
+        padding: 25px 15px;
+    }
+    
+    .feature-icon {
+        font-size: 2.5em;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.2em;
+    }
+}
+
+@media (max-width: 426px) {
+    .about-hero {
+        padding: 30px 15px;
+    }
+    
+    .about-hero h1 {
+        font-size: 1.8em;
+    }
+    
+    .about-hero p {
+        font-size: 1em;
+    }
+    
+    .about-section {
+        padding: 25px 15px;
+    }
+    
+    .about-section h2 {
+        font-size: 1.4em;
+    }
+    
+    .feature-card {
+        padding: 20px 15px;
+    }
+    
+    .feature-icon {
+        font-size: 2.2em;
+    }
+    
+    .feature-card h3 {
+        font-size: 1.1em;
+    }
+    
+    .feature-card p {
+        font-size: 0.9em;
     }
 }
