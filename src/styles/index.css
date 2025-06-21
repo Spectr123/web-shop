@@ -1571,7 +1571,7 @@ footer {
 
 .social-link:hover {
     background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%);
-    color: white;
+    color: rgba(255, 255, 255, 1);
     border-color: transparent;
     transform: translateY(-2px);
     box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
@@ -1737,4 +1737,272 @@ footer {
         padding: 8px 15px;
         font-size: 0.8em;
     }
+}
+
+
+/* РЕЗЮМЕ(СТРАНИЦА WORKPAGE) */
+
+.work-content {
+    display: block;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 75px 20px;
+}
+
+.work-hero {
+    text-align: center;
+    padding: 60px 0;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+    border-radius: 20px;
+    margin-bottom: 40px;
+}
+
+.work-hero h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.work-hero p {
+    font-size: 1.2em;
+    color: #7f8c8d;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.work-form-section {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(102, 126, 234, 0.1);
+}
+
+.work-form-section h2 {
+    font-size: 1.8em;
+    color: #2c3e50;
+    margin-bottom: 30px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+.work-form {
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #2c3e50;
+    font-size: 1.1em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="tel"],
+.form-group input[type="email"] {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid rgba(102, 126, 234, 0.3);
+    border-radius: 12px;
+    font-size: 16px;
+    color: #2c3e50;
+    background: rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    font-family: 'Roboto', sans-serif;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: rgba(102, 126, 234, 0.7);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    background: rgba(255, 255, 255, 1);
+}
+
+.file-input-wrapper {
+    position: relative;
+}
+
+.file-input {
+    position: absolute;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+.file-input-label {
+    display: block;
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px dashed rgba(102, 126, 234, 0.3);
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #7f8c8d;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.file-input-label:hover {
+    border-color: rgba(102, 126, 234, 0.5);
+    background: rgba(102, 126, 234, 0.05);
+    color: #2c3e50;
+}
+
+.file-input:focus + .file-input-label {
+    border-color: rgba(102, 126, 234, 0.7);
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 1) 100%);
+    color: rgba(255, 255, 255, 1);
+    border: none;
+    padding: 18px 30px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    font-family: 'Roboto', sans-serif;
+    margin-top: 10px;
+}
+
+.submit-btn:hover {
+    background: linear-gradient(135deg, rgba(118, 75, 162, 1) 0%, rgba(102, 126, 234, 1) 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:active {
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .work-content {
+        padding: 0 15px;
+    }
+
+    .work-hero {
+        padding: 40px 20px;
+        margin-bottom: 30px;
+    }
+
+    .work-hero h1 {
+        font-size: 2em;
+    }
+
+    .work-hero p {
+        font-size: 1.1em;
+    }
+
+    .work-form-section {
+        padding: 30px 20px;
+    }
+
+    .work-form-section h2 {
+        font-size: 1.5em;
+    }
+
+    .form-group input[type="text"],
+    .form-group input[type="tel"],
+    .form-group input[type="email"] {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .file-input-label {
+        padding: 12px 15px;
+        font-size: 14px;
+    }
+
+    .submit-btn {
+        padding: 15px 25px;
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 426px) {
+    .work-hero {
+        padding: 30px 15px;
+    }
+
+    .work-hero h1 {
+        font-size: 1.8em;
+    }
+
+    .work-hero p {
+        font-size: 1em;
+    }
+
+    .work-form-section {
+        padding: 25px 15px;
+    }
+
+    .work-form-section h2 {
+        font-size: 1.4em;
+    }
+
+    .form-group label {
+        font-size: 1em;
+    }
+}
+.success-modal .modal-content {
+    text-align: center;
+}
+
+.success-modal .modal-icon {
+    font-size: 64px;
+    margin-bottom: 20px;
+    color: #28a745;
+}
+
+.success-modal .modal-title {
+    font-size: 24px;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.success-modal .modal-message {
+    font-size: 16px;
+    color: #666;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+.success-modal .modal-button.confirm {
+    background: linear-gradient(135deg, rgba(102, 126, 234, 1) 0%, rgba(118, 75, 162, 1) 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 120px;
+}
+
+.success-modal .modal-button.confirm:hover {
+    background: linear-gradient(135deg, rgba(118, 75, 162, 1) 0%, rgba(102, 126, 234, 1) 100%);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
 }

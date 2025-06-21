@@ -34,7 +34,7 @@ const ContactPage = () => {
           <div className="contact-card">
             <div className="contact-icon">📞</div>
             <h3>Служба поддержки</h3>
-            <p><a href="tel:+77014447557">+7 701 444 7557</a></p>
+            <p>+7 701 444 7557</p>
           </div>
           
           <div className="contact-card">
