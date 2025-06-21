@@ -27,7 +27,7 @@ const WorkPage = () => {
 
   const handleSubmit = (e) => { // Будет бэк изменить!!!
     e.preventDefault();
-    console.log('Отправка резюме:', formData); // Здесь можно добавить логику отправки данных на сервер(и нужно был бы бэк...)
+    console.log('Отправка резюме:', formData); // Здесь можно добавить логику отправки данных на сервер(и нужно, был бы бэк...)
     setShowSuccessModal(true);
   };
 
