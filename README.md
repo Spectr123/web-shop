@@ -16,3 +16,4 @@ In the project directory, you can find https://galmart.kz's products, images and
 
 ### Only products are copied. The website design, code structure, and the code itself are protected by copyright.
 
+### Deploy with Netlify
