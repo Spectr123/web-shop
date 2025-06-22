@@ -594,30 +594,33 @@ const HomePage = () => {
       img: "sugar.jpg",
       desc: "Обычный сахар-песок, необходимый для выпечки и напитков.",
       category: "Специи",
-    }
+    },
   ]);
-  // const [items] = useState([]); 
+  // const [items] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("Все товары");
   const [searchQuery, setSearchQuery] = useState("");
 
   // Функция для фильтрации товаров по категории и поиску
   const filterItemsByCategory = useMemo(() => {
     let filteredItems = items;
-    
+
     // Если есть поисковый запрос, ищем по всем товарам независимо от категории
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase().trim();
-      return items.filter((item) =>
-        item.title.toLowerCase().includes(query) ||
-        item.category.toLowerCase().includes(query)
+      return items.filter(
+        (item) =>
+          item.title.toLowerCase().includes(query) ||
+          item.category.toLowerCase().includes(query)
       );
     }
-    
+
     // Если поискового запроса нет, фильтруем только по категории
     if (selectedCategory !== "Все товары") {
-      filteredItems = filteredItems.filter((item) => item.category === selectedCategory);
+      filteredItems = filteredItems.filter(
+        (item) => item.category === selectedCategory
+      );
     }
-    
+
     return filteredItems;
   }, [items, selectedCategory, searchQuery]);
 

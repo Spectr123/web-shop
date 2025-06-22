@@ -24,7 +24,9 @@ const CATEGORIES = [
 const DESKTOP_BREAKPOINT = 768;
 
 const useResponsive = () => {
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth > DESKTOP_BREAKPOINT);
+  const [isDesktop, setIsDesktop] = useState(
+    window.innerWidth > DESKTOP_BREAKPOINT
+  );
 
   useEffect(() => {
     const handleResize = () => {
@@ -41,9 +43,9 @@ const useResponsive = () => {
 
 const CategoryItem = ({ category, isActive, isExpanded, onClick }) => (
   <div
-    className={clsx("category", { 
+    className={clsx("category", {
       active: isActive,
-      show: isExpanded 
+      show: isExpanded,
     })}
     onClick={() => onClick(category.name)}
   >
@@ -77,12 +79,12 @@ const Categories = ({ chooseCategory }) => {
   };
 
   const toggleCategories = () => {
-    setIsExpanded(prev => !prev);
+    setIsExpanded((prev) => !prev);
   };
 
   return (
     <div className="categories">
-      {CATEGORIES.map(category => (
+      {CATEGORIES.map((category) => (
         <CategoryItem
           key={category.key}
           category={category}
@@ -91,11 +93,8 @@ const Categories = ({ chooseCategory }) => {
           onClick={handleCategoryClick}
         />
       ))}
-      
-      <ToggleButton 
-        isExpanded={isExpanded} 
-        onClick={toggleCategories} 
-      />
+
+      <ToggleButton isExpanded={isExpanded} onClick={toggleCategories} />
     </div>
   );
 };
