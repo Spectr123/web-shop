@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { ShoppingBasket } from "lucide-react";
+import { toast } from "react-toastify";
 import ClearBasket from "./Basket/ClearBasket";
 import OrdersList from "./Basket/OrdersList";
 import "swiper/css";
@@ -28,7 +29,10 @@ const Header = ({ orders, onDelete, onIncrease, onDecrease }) => {
 
   const handleClearCart = () => {
     if (orders.length === 0) {
-      alert("Корзина уже пуста!");
+      toast.info("Корзина уже пуста! 🛒", {
+        position: "bottom-right",
+        autoClose: 2000,
+      });
       return;
     }
     setIsConfirmModalOpen(true);

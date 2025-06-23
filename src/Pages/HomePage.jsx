@@ -36,7 +36,7 @@ const HomePage = () => {
       category: "Выпечка",
     },
     {
-      id: 65,
+      id: 4,
       title: "Багет французский galmart, 270 г",
       price: 620,
       img: "bread_baton_france.jpg",
@@ -44,7 +44,7 @@ const HomePage = () => {
       category: "Выпечка",
     },
     {
-      id: 66,
+      id: 5,
       title: "Булочка Ярославская galmart, 100 г",
       price: 200,
       img: "buns_yaraslavskaya.jpg",
@@ -52,7 +52,7 @@ const HomePage = () => {
       category: "Выпечка",
     },
     {
-      id: 67,
+      id: 6,
       title: "Круассан galmart, 1 шт, Казахстан",
       price: 300,
       img: "croissant.jpg",
@@ -60,7 +60,7 @@ const HomePage = () => {
       category: "Выпечка",
     },
     {
-      id: 4,
+      id: 7,
       title: "Молоко Родина 3,2%",
       price: 470,
       img: "milk.jpg",
@@ -68,7 +68,7 @@ const HomePage = () => {
       category: "Молочные продукты",
     },
     {
-      id: 5,
+      id: 8,
       title: "Сыр Ламбер 50%, 230 г",
       price: 1980,
       img: "cheese.jpg",
@@ -76,7 +76,7 @@ const HomePage = () => {
       category: "Молочные продукты",
     },
     {
-      id: 6,
+      id: 9,
       title: "Творог President Домашний 5%, 450 г",
       price: 1070,
       img: "cottage_cheeseъ.jpg",
@@ -84,7 +84,7 @@ const HomePage = () => {
       category: "Молочные продукты",
     },
     {
-      id: 69,
+      id: 10,
       title: "Молоко Шадринское концентрированное, 7,1%, 500 мл",
       price: 960,
       img: "milk_shadrinskoe.jpg",
@@ -92,7 +92,7 @@ const HomePage = () => {
       category: "Молочные продукты",
     },
     {
-      id: 70,
+      id: 11,
       title: "Сливки Домик в деревне стерилизованные 20%, 200 мл,",
       price: 720,
       img: "cream.jpg",
@@ -100,7 +100,7 @@ const HomePage = () => {
       category: "Молочные продукты",
     },
     {
-      id: 71,
+      id: 12,
       title: "Сметана President 20%, 200 г",
       price: 1070,
       img: "sour cream.jpg",
@@ -108,7 +108,7 @@ const HomePage = () => {
       category: "Молочные продукты",
     },
     {
-      id: 7,
+      id: 13,
       title: "Орехи кедровые очищенные",
       price: 4704,
       img: "nuts.jpg",
@@ -116,7 +116,7 @@ const HomePage = () => {
       category: "Закуски",
     },
     {
-      id: 8,
+      id: 14,
       title: "Чипсы Лейс, 150 г",
       price: 600,
       img: "chips_onion.jpg",
@@ -124,7 +124,7 @@ const HomePage = () => {
       category: "Закуски",
     },
     {
-      id: 9,
+      id: 15,
       title: "Квашеная капуста, 500 г",
       price: 400,
       img: "sauerkraut.jpeg",
@@ -132,7 +132,7 @@ const HomePage = () => {
       category: "Закуски",
     },
     {
-      id: 10,
+      id: 16,
       title: "Гранола Sante Granola с шоколадом, 350 г",
       price: 2500,
       img: "corn_flakes.jpg",
@@ -140,7 +140,7 @@ const HomePage = () => {
       category: "Закуски",
     },
     {
-      id: 72,
+      id: 17,
       title: "Чипсы Рringles паприка, 165 г",
       price: 2170,
       img: "pringles.jpg",
@@ -148,7 +148,7 @@ const HomePage = () => {
       category: "Закуски",
     },
     {
-      id: 73,
+      id: 18,
       title: "Крекер Tuc с сыром, 100 г",
       price: 620,
       img: "tuc.jpg",
@@ -156,7 +156,7 @@ const HomePage = () => {
       category: "Закуски",
     },
     {
-      id: 11,
+      id: 19,
       title: "Яйцо Казгер-Құс, 10 шт, Казахстан",
       price: 850,
       img: "eggs.jpg",
@@ -164,7 +164,7 @@ const HomePage = () => {
       category: "Яйца и мясо",
     },
     {
-      id: 12,
+      id: 20,
       title: "Курица охлажденная, 1 кг",
       price: 3200,
       img: "chicken.jpg",
@@ -172,7 +172,7 @@ const HomePage = () => {
       category: "Яйца и мясо",
     },
     {
-      id: 13,
+      id: 21,
       title: "Куриные крылышки, 1 кг",
       price: 2800,
       img: "chicken_wings.jpg",
@@ -180,7 +180,7 @@ const HomePage = () => {
       category: "Яйца и мясо",
     },
     {
-      id: 14,
+      id: 22,
       title: "Куриные бедра Кус вкус, 1 кг",
       price: 1900,
       img: "chicken_thighs.jpg",
@@ -188,7 +188,7 @@ const HomePage = () => {
       category: "Яйца и мясо",
     },
     {
-      id: 15,
+      id: 23,
       title: "Куриные филе, 1 кг",
       price: 2200,
       img: "chicken_breast.png",
@@ -196,7 +196,7 @@ const HomePage = () => {
       category: "Яйца и мясо",
     },
     {
-      id: 16,
+      id: 24,
       title: "Огурцы Миринда, вес, Казахстан",
       price: 422,
       img: "cucumbers.jpeg",
@@ -204,7 +204,7 @@ const HomePage = () => {
       category: "Овощи",
     },
     {
-      id: 17,
+      id: 25,
       title: "Картофель, 1 кг",
       price: 430,
       img: "potato.jpg",
@@ -212,7 +212,7 @@ const HomePage = () => {
       category: "Овощи",
     },
     {
-      id: 18,
+      id: 26,
       title: "Морковь, 1 кг",
       price: 400,
       img: "carrot.jpg",
@@ -220,7 +220,7 @@ const HomePage = () => {
       category: "Овощи",
     },
     {
-      id: 19,
+      id: 27,
       title: "Лук репчатый, 1 кг",
       price: 300,
       img: "onion.jpg",
@@ -228,7 +228,7 @@ const HomePage = () => {
       category: "Овощи",
     },
     {
-      id: 20,
+      id: 28,
       title: "Капуста белокочанная, 1 кг",
       price: 540,
       img: "cabbage.jpg",
@@ -236,7 +236,7 @@ const HomePage = () => {
       category: "Овощи",
     },
     {
-      id: 21,
+      id: 29,
       title: "Свекла, 1 кг",
       price: 138,
       img: "beetroot.jpg",
@@ -244,7 +244,7 @@ const HomePage = () => {
       category: "Овощи",
     },
     {
-      id: 22,
+      id: 30,
       title: "Паста Raguso Linguine, 500 г ",
       price: 2500,
       img: "pasta.jpg",
@@ -252,7 +252,7 @@ const HomePage = () => {
       category: "Макаронные изделия",
     },
     {
-      id: 23,
+      id: 31,
       title: "Макароны Султан спираль, 400 г,",
       price: 810,
       img: "macaroni.jpg",
@@ -260,7 +260,7 @@ const HomePage = () => {
       category: "Макаронные изделия",
     },
     {
-      id: 24,
+      id: 32,
       title: "Макароны Barilla Farfalle фарфалле, 500 г",
       price: 920,
       img: "macaroni_barila.jpg",
@@ -268,7 +268,7 @@ const HomePage = () => {
       category: "Макаронные изделия",
     },
     {
-      id: 25,
+      id: 33,
       title: "Кофе в зернах Lavazza Qualita Oro",
       price: 5000,
       img: "coffee.jpg",
@@ -276,7 +276,7 @@ const HomePage = () => {
       category: "Напитки",
     },
     {
-      id: 26,
+      id: 34,
       title: "Чай Greenfield Ассам, 25 пак.",
       price: 1055,
       img: "tea.jpg",
@@ -284,7 +284,7 @@ const HomePage = () => {
       category: "Напитки",
     },
     {
-      id: 27,
+      id: 35,
       title: "Сок Апельсиновый Primo, 200мл",
       price: 600,
       img: "orange_juice.png",
@@ -292,7 +292,7 @@ const HomePage = () => {
       category: "Напитки",
     },
     {
-      id: 28,
+      id: 36,
       title: "Томатный сок, 750 мл",
       price: 1400,
       img: "tomato_juice.jpg",
@@ -300,87 +300,7 @@ const HomePage = () => {
       category: "Напитки",
     },
     {
-      id: 29,
-      title: "Шоколад Казахстанский",
-      price: 900,
-      img: "chocolate.jpeg",
-      desc: "Темный шоколад с высоким содержанием какао.",
-      category: "Сладости",
-    },
-    {
-      id: 30,
-      title: "Печенье Орео, 154 г",
-      price: 600,
-      img: "oreo.jpg",
-      desc: "Популярное печенье с кремовой начинкой.",
-      category: "Сладости",
-    },
-    {
-      id: 31,
-      title: "Мед Столичный майский, 430 г",
-      price: 2270,
-      img: "honey.jpg",
-      desc: "Ароматный мед, собранный с цветущих лугов.",
-      category: "Сладости",
-    },
-    {
-      id: 32,
-      title: "Печенье курабье goMART",
-      price: 990,
-      img: "sandwich_cookies.png",
-      desc: "Вкусное песочное печенье с начинкой.",
-      category: "Сладости",
-    },
-    {
-      id: 66,
-      title: "Печенье whoopie pie galmart, вес",
-      price: 2320,
-      img: "cookies_whoopie_pie..jpg",
-      desc: "Вкусное шоколадное печенье с кремом",
-      category: "Сладости",
-    },
-    {
-      id: 67,
-      title: "Вафли Kinder Bueno в белом шоколаде, 39 г",
-      price: 480,
-      img: "kinder_bueno.jpg",
-      desc: "Вафли Kinder Bueno в белом шоколаде - это хрустящие вафли с нежной начинкой из белого шоколада и орехов.", 
-      category: "Сладости",
-    },
-    {
-      id: 69,
-      title: "Батончик шоколадный Snickers Super, 80 г",
-      price: 575,
-      img: "snikers.webp",
-      desc: "Шоколадный батончик Snickers утолит голод и ускорит выработку гормона счастья — серотонина. ", 
-      category: "Сладости",
-    },
-    {
-      id: 70,
-      title: "Яйцо шоколадное Kinder сюрприз стандарт Т36 1шт",
-      price: 655,
-      img: "kinder_egg.jpg",
-      desc: "Kinder Сюрприз – яйцо из молочного шоколада с молочным внутренним слоем и игрушкой внутри.", 
-      category: "Сладости",
-    },
-    {
-      id: 71,
-      title: "Кукурузные палочки Сластёна, 120 г",
-      price: 280,
-      img: "corn_sticks.jpg",
-      desc: "Кукурузные палочки — продукт, с которого началась компания «АЯМ».", 
-      category: "Сладости",
-    },
-    {
-      id: 72,
-      title: "Шоколад Merci Лесной молочный с лесным орехом и миндалем",
-      price: 1530,
-      img: "merci.jpg",
-      desc: "Merci шоколадные плитки – это шоколад высочайшего немецкого качества.", 
-      category: "Сладости",
-    },
-    {
-      id: 33,
+      id: 37,
       title: "Масло сливочное President 82%, 400 г",
       price: 3885,
       img: "butter.jpg",
@@ -388,7 +308,7 @@ const HomePage = () => {
       category: "Масло",
     },
     {
-      id: 34,
+      id: 38,
       title: "Масло оливковое Ege bal 250мл",
       price: 3770,
       img: "olive_oil.jpg",
@@ -396,7 +316,7 @@ const HomePage = () => {
       category: "Масло",
     },
     {
-      id: 35,
+      id: 39,
       title: "Масло подсолнечное Шедевр, 1 л",
       price: 947,
       img: "sunflower_oil.jpg",
@@ -404,7 +324,7 @@ const HomePage = () => {
       category: "Масло",
     },
     {
-      id: 36,
+      id: 40,
       title: "Рис Мистраль басмати , 500 г",
       price: 1200,
       img: "rice.jpg",
@@ -412,7 +332,7 @@ const HomePage = () => {
       category: "Зерновые продукты",
     },
     {
-      id: 37,
+      id: 41,
       title: "Гречка Ярмарка, 900 г",
       price: 860,
       img: "buckwheat.jpg",
@@ -420,7 +340,7 @@ const HomePage = () => {
       category: "Зерновые продукты",
     },
     {
-      id: 38,
+      id: 42,
       title: "Крупа Ярмарка чечевица красная платинум, 350 г",
       price: 860,
       img: "lentils.jpg",
@@ -428,7 +348,7 @@ const HomePage = () => {
       category: "Зерновые продукты",
     },
     {
-      id: 39,
+      id: 43,
       title: "Колбаса Докторская, 500 г",
       price: 1200,
       img: "sausage.jpg",
@@ -436,7 +356,7 @@ const HomePage = () => {
       category: "Колбасы и мясные деликатесы",
     },
     {
-      id: 40,
+      id: 44,
       title: "Сервелат Мясодел Мусульманский, 500 г",
       price: 2110,
       img: "smoked_sausage.jpg",
@@ -444,7 +364,7 @@ const HomePage = () => {
       category: "Колбасы и мясные деликатесы",
     },
     {
-      id: 68,
+      id: 45,
       title: "Сосиски Бижан малютка детскиe 470г",
       price: 550,
       img: "sausage_bijan.png",
@@ -452,7 +372,7 @@ const HomePage = () => {
       category: "Колбасы и мясные деликатесы",
     },
     {
-      id: 41,
+      id: 46,
       title: "Яблоки Гренни Смит, 1 кг",
       price: 800,
       img: "apples.jpg",
@@ -460,7 +380,7 @@ const HomePage = () => {
       category: "Фрукты",
     },
     {
-      id: 42,
+      id: 47,
       title: "Бананы, 1 кг",
       price: 1000,
       img: "bananas.jpg",
@@ -468,7 +388,7 @@ const HomePage = () => {
       category: "Фрукты",
     },
     {
-      id: 43,
+      id: 48,
       title: "Груша Конференц, 1 кг",
       price: 2300,
       img: "pears.jpg",
@@ -476,7 +396,7 @@ const HomePage = () => {
       category: "Фрукты",
     },
     {
-      id: 44,
+      id: 49,
       title: "Клубника",
       price: 1200,
       img: "strawberries.jpg",
@@ -484,7 +404,7 @@ const HomePage = () => {
       category: "Фрукты",
     },
     {
-      id: 45,
+      id: 50,
       title: "Кукуруза консервированная, Bonduelle, 340 г",
       price: 550,
       img: "corn.jpg",
@@ -492,7 +412,7 @@ const HomePage = () => {
       category: "Консервация",
     },
     {
-      id: 46,
+      id: 51,
       title: "Тунец Celeste для салатов натуральный, 185 г",
       price: 800,
       img: "tuna.jpg",
@@ -500,7 +420,7 @@ const HomePage = () => {
       category: "Консервация",
     },
     {
-      id: 47,
+      id: 52,
       title: "Горошек Bonduelle, 212 мл",
       price: 640,
       img: "peas.jpg",
@@ -508,7 +428,7 @@ const HomePage = () => {
       category: "Консервация",
     },
     {
-      id: 48,
+      id: 53,
       title: "Пицца La Bottega Маргарита, замороженная, 400 г",
       price: 2200,
       img: "pizza.jpg",
@@ -516,7 +436,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 49,
+      id: 54,
       title: "Пельмени Бижан говяжьи, 450 г",
       price: 1500,
       img: "dumplings.jpg",
@@ -524,7 +444,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 50,
+      id: 55,
       title: "Пицца La Bottega с тунцом, 400 г",
       price: 2900,
       img: "fish_pizza.jpg",
@@ -532,7 +452,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 51,
+      id: 56,
       title: "Наггетсы Willma куриные классические, замороженные, 300 г",
       price: 800,
       img: "chicken_nuggets.jpg",
@@ -540,7 +460,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 52,
+      id: 57,
       title: "Салат Оливье, готовый",
       price: 1200,
       img: "olivie_salas.jpg",
@@ -548,7 +468,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 53,
+      id: 58,
       title: "Картофельное пюре с котлетой, 400 г",
       price: 1400,
       img: "mashed_potatoes.jpg",
@@ -556,7 +476,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 54,
+      id: 59,
       title: "Пирожки с мясом",
       price: 210,
       img: "meat_pies.jpg",
@@ -564,7 +484,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 55,
+      id: 60,
       title: "Пицца La Bottega грибная, 400 г",
       price: 2400,
       img: "mashroom_pizza.jpeg",
@@ -572,7 +492,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 56,
+      id: 61,
       title: "Пирог клубничный, 1000 г",
       price: 5850,
       img: "strawberry_pie.jpg",
@@ -580,7 +500,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 57,
+      id: 62,
       title: "Котлеты Sarqyt куриные замороженные 300г",
       price: 2700,
       img: "chicken_cutlets.jpg",
@@ -588,7 +508,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 58,
+      id: 63,
       title: "Пицца La Bottega 4 Сыра, замороженная, 400 г",
       price: 2500,
       img: "four_cheeses_pizza..png",
@@ -596,7 +516,7 @@ const HomePage = () => {
       category: "Готовые блюда",
     },
     {
-      id: 59,
+      id: 64,
       title: "Паста томатная Томастер, 200 г",
       price: 540,
       img: "tomato_paste.jpg",
@@ -604,7 +524,7 @@ const HomePage = () => {
       category: "Соусы и приправы",
     },
     {
-      id: 60,
+      id: 65,
       title: "Кетчуп Heinz, 320 г",
       price: 800,
       img: "ketchup.jpg",
@@ -612,7 +532,7 @@ const HomePage = () => {
       category: "Соусы и приправы",
     },
     {
-      id: 61,
+      id: 66,
       title: "Горчица 3 Желания Заправская 130г",
       price: 250,
       img: "mustard.jpg",
@@ -620,7 +540,7 @@ const HomePage = () => {
       category: "Соусы и приправы",
     },
     {
-      id: 62,
+      id: 67,
       title: "Соль Аралтұз йодированная, 1 кг",
       price: 100,
       img: "salt.jpg",
@@ -628,7 +548,7 @@ const HomePage = () => {
       category: "Специи",
     },
     {
-      id: 63,
+      id: 68,
       title: "Перец черный Эстетика Вкуса молотый, 36 г",
       price: 1670,
       img: "black_pepper.jpg",
@@ -636,23 +556,100 @@ const HomePage = () => {
       category: "Специи",
     },
     {
-      id: 64,
+      id: 69,
       title: "Сахар-песок Отличная Кухня, 500 г",
       price: 550,
       img: "sugar.jpg",
       desc: "Обычный сахар-песок, необходимый для выпечки и напитков.",
       category: "Специи",
     },
+    {
+      id: 70,
+      title: "Шоколад Казахстанский",
+      price: 900,
+      img: "chocolate.jpeg",
+      desc: "Темный шоколад с высоким содержанием какао.",
+      category: "Сладости",
+    },
+    {
+      id: 71,
+      title: "Печенье Орео, 154 г",
+      price: 600,
+      img: "oreo.jpg",
+      desc: "Популярное печенье с кремовой начинкой.",
+      category: "Сладости",
+    },
+    {
+      id: 72,
+      title: "Мед Столичный майский, 430 г",
+      price: 2270,
+      img: "honey.jpg",
+      desc: "Ароматный мед, собранный с цветущих лугов.",
+      category: "Сладости",
+    },
+    {
+      id: 73,
+      title: "Печенье курабье goMART",
+      price: 990,
+      img: "sandwich_cookies.png",
+      desc: "Вкусное песочное печенье с начинкой.",
+      category: "Сладости",
+    },
+    {
+      id: 74,
+      title: "Печенье whoopie pie galmart, вес",
+      price: 2320,
+      img: "cookies_whoopie_pie..jpg",
+      desc: "Вкусное шоколадное печенье с кремом",
+      category: "Сладости",
+    },
+    {
+      id: 75,
+      title: "Вафли Kinder Bueno в белом шоколаде, 39 г",
+      price: 480,
+      img: "kinder_bueno.jpg",
+      desc: "Вафли Kinder Bueno в белом шоколаде - это хрустящие вафли с нежной начинкой из белого шоколада и орехов.",
+      category: "Сладости",
+    },
+    {
+      id: 76,
+      title: "Батончик шоколадный Snickers Super, 80 г",
+      price: 575,
+      img: "snikers.webp",
+      desc: "Шоколадный батончик Snickers утолит голод и ускорит выработку гормона счастья — серотонина. ",
+      category: "Сладости",
+    },
+    {
+      id: 77,
+      title: "Яйцо шоколадное Kinder сюрприз стандарт Т36 1шт",
+      price: 655,
+      img: "kinder_egg.jpg",
+      desc: "Kinder Сюрприз – яйцо из молочного шоколада с молочным внутренним слоем и игрушкой внутри.",
+      category: "Сладости",
+    },
+    {
+      id: 78,
+      title: "Кукурузные палочки Сластёна, 120 г",
+      price: 280,
+      img: "corn_sticks.jpg",
+      desc: "Кукурузные палочки — продукт, с которого началась компания «АЯМ».",
+      category: "Сладости",
+    },
+    {
+      id: 79,
+      title: "Шоколад Merci Лесной молочный с лесным орехом и миндалем",
+      price: 1530,
+      img: "merci.jpg",
+      desc: "Merci шоколадные плитки – это шоколад высочайшего немецкого качества.",
+      category: "Сладости",
+    },
   ]);
-  // const [items] = useState([]);
+  // const [items] = useState([]); // Использовать этот вариант, если нужно загрузить товары из API(с бэка) или копироавать код
   const [selectedCategory, setSelectedCategory] = useState("Все товары");
   const [searchQuery, setSearchQuery] = useState("");
-
-  // Функция для фильтрации товаров по категории и поиску
   const filterItemsByCategory = useMemo(() => {
     let filteredItems = items;
 
-    // Если есть поисковый запрос, ищем по всем товарам независимо от категории
     if (searchQuery.trim()) {
       const query = searchQuery.toLowerCase().trim();
       return items.filter(
@@ -662,7 +659,6 @@ const HomePage = () => {
       );
     }
 
-    // Если поискового запроса нет, фильтруем только по категории
     if (selectedCategory !== "Все товары") {
       filteredItems = filteredItems.filter(
         (item) => item.category === selectedCategory

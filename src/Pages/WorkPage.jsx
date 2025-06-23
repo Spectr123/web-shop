@@ -8,6 +8,7 @@ const WorkPage = () => {
     email: "",
     resume: null,
   });
+  const [errors, setErrors] = useState({});
   const [showSuccessModal, setShowSuccessModal] = useState(false);
 
   const handleInputChange = (e) => {
@@ -16,6 +17,9 @@ const WorkPage = () => {
       ...prev,
       [name]: value,
     }));
+    if (errors[name]) {
+      setErrors((prev) => ({ ...prev, [name]: "" }));
+    }
   };
 
   const handleFileChange = (e) => {
@@ -23,18 +27,43 @@ const WorkPage = () => {
       ...prev,
       resume: e.target.files[0],
     }));
+    if (errors.resume) {
+      setErrors((prev) => ({ ...prev, resume: "" }));
+    }
+  };
+
+  const validateForm = () => {
+    const newErrors = {};
+
+    if (!formData.name.trim()) newErrors.name = "Имя обязательно";
+    if (!formData.phone.trim()) newErrors.phone = "Телефон обязателен";
+    else if (!/^[+]?[0-9\s\-()]{10,}$/.test(formData.phone))
+      newErrors.phone = "Неверный формат телефона";
+    if (!formData.email.trim()) newErrors.email = "Email обязателен";
+    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      newErrors.email = "Неверный формат email";
+    if (!formData.resume) newErrors.resume = "Резюме обязательно";
+
+    return newErrors;
   };
 
   const handleSubmit = (e) => {
-    // Будет бэк изменить!!!
     e.preventDefault();
-    console.log("Отправка резюме:", formData); // Здесь можно добавить логику отправки данных на сервер(и нужно, был бы бэк...)
+    const newErrors = validateForm();
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      return;
+    }
+
+    console.log("Отправка резюме:", formData);
     setShowSuccessModal(true);
   };
 
   const closeModal = () => {
     setShowSuccessModal(false);
     setFormData({ name: "", phone: "", email: "", resume: null });
+    setErrors({});
   };
 
   return (
@@ -48,7 +77,6 @@ const WorkPage = () => {
             нами!
           </p>
         </div>
-
         <div className="work-form-section">
           <h2>Откликнуться</h2>
           <form className="work-form" onSubmit={handleSubmit}>
@@ -62,8 +90,8 @@ const WorkPage = () => {
                 onChange={handleInputChange}
                 required
               />
+              {errors.name && <span className="error">{errors.name}</span>}
             </div>
-
             <div className="form-group">
               <label htmlFor="phone">Phone:</label>
               <input
@@ -74,8 +102,8 @@ const WorkPage = () => {
                 onChange={handleInputChange}
                 required
               />
+              {errors.phone && <span className="error">{errors.phone}</span>}
             </div>
-
             <div className="form-group">
               <label htmlFor="email">Адрес электронной почты:</label>
               <input
@@ -86,8 +114,8 @@ const WorkPage = () => {
                 onChange={handleInputChange}
                 required
               />
+              {errors.email && <span className="error">{errors.email}</span>}
             </div>
-
             <div className="form-group">
               <label htmlFor="resume">Резюме:</label>
               <div className="file-input-wrapper">
@@ -103,14 +131,16 @@ const WorkPage = () => {
                   {formData.resume ? formData.resume.name : "Файл не выбран"}
                 </label>
               </div>
+              {errors.resume && <span className="error">{errors.resume}</span>}
             </div>
-
             <button type="submit" className="submit-btn">
               Отправить резюме
             </button>
           </form>
         </div>
       </div>
+
+      {/* Небольшая модалочка если резюме отправлено(ну пока фунции отправки нет, но будет(наверное)) */}
 
       {showSuccessModal && (
         <div className="modal-overlay" onClick={closeModal}>
