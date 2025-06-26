@@ -1,15 +1,22 @@
-import React, { useState, useCallback, useMemo, useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import React, { useState } from "react";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Items from "../components/Items";
 import Categories from "../components/Categories";
 import SearchBar from "../components/SearchBar";
+import PresentationSlider from "../components/PresentationSlider";
+import useMobile from "../components/Hooks/useMobile";
+import { useFilterItemsByCategory } from "../components/functions/filterItemsByCategory";
+import { useCategoryHandlers } from "../components/functions/categoryHandlers";
+import { useCartHandlers } from "../components/functions/cartHandlers";
+import { useCalculations } from "../components/functions/calculations";
+import { useSearchHandlers } from "../components/functions/searchHandlers";
 
 const HomePage = () => {
+  const isMobile = useMobile();
   const [orders, setOrders] = useState([]);
-  const lastToastTimestamp = useRef(0);
   const [items] = useState([
     {
       id: 1,
@@ -647,99 +654,16 @@ const HomePage = () => {
   // const [items] = useState([]); // Использовать этот вариант, если нужно загрузить товары из API(с бэка) или копироавать код
   const [selectedCategory, setSelectedCategory] = useState("Все товары");
   const [searchQuery, setSearchQuery] = useState("");
-  const filterItemsByCategory = useMemo(() => {
-    let filteredItems = items;
-
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase().trim();
-      return items.filter(
-        (item) =>
-          item.title.toLowerCase().includes(query) ||
-          item.category.toLowerCase().includes(query)
-      );
-    }
-
-    if (selectedCategory !== "Все товары") {
-      filteredItems = filteredItems.filter(
-        (item) => item.category === selectedCategory
-      );
-    }
-
-    return filteredItems;
-  }, [items, selectedCategory, searchQuery]);
-
-  // Функция для выбора категории
-  const handleCategorySelection = useCallback((category) => {
-    setSelectedCategory(category);
-  }, []);
-
-  // Функция для удаления товара из корзины
-  const removeItemFromCart = useCallback((id) => {
-    setOrders((prevOrders) => prevOrders.filter((order) => order.id !== id));
-  }, []);
-
-  // Функция для уменьшения и увелечения количества товара
-  const updateItemQuantity = useCallback((id, operation) => {
-    setOrders((prevOrders) =>
-      prevOrders.map((order) =>
-        order.id === id
-          ? {
-              ...order,
-              quantity:
-                operation === "increase"
-                  ? order.quantity + 1
-                  : Math.max(1, order.quantity - 1),
-            }
-          : order
-      )
-    );
-  }, []);
-
-  // Функция для добавления товара в корзину
-  const addItemToCart = useCallback((item, quantity = 1) => {
-    setOrders((prevOrders) => {
-      const existingOrder = prevOrders.find((order) => order.id === item.id);
-      const now = Date.now();
-      if (now - lastToastTimestamp.current > 100) {
-        toast.success(
-          existingOrder
-            ? `Количество ${item.title} увеличено`
-            : ` ${item.title} добавлен(а) в корзину`,
-          {
-            position: "bottom-right",
-            autoClose: 1500,
-          }
-        );
-        lastToastTimestamp.current = now;
-      }
-
-      return existingOrder
-        ? prevOrders.map((order) =>
-            order.id === item.id
-              ? { ...order, quantity: order.quantity + quantity }
-              : order
-          )
-        : [...prevOrders, { ...item, quantity: quantity }];
-    });
-  }, []);
-
-  // Функция для расчета общей стоимости
-  const calculateTotalPrice = useCallback(() => {
-    return orders.reduce(
-      (total, order) => total + order.price * order.quantity,
-      0
-    );
-  }, [orders]);
-
-  // Функция для расчета общего количества товаров
-  const calculateTotalItems = useCallback(() => {
-    return orders.reduce((total, order) => total + order.quantity, 0);
-  }, [orders]);
-
-  // Функция для обработки поиска
-  const handleSearch = useCallback((query) => {
-    setSearchQuery(query);
-  }, []);
+  const filterItemsByCategory = useFilterItemsByCategory(
+    items,
+    selectedCategory,
+    searchQuery
+  );
+  const { handleCategorySelection } = useCategoryHandlers(setSelectedCategory);
+  const { removeItemFromCart, updateItemQuantity, addItemToCart } =
+    useCartHandlers(setOrders);
+  const { calculateTotalPrice, calculateTotalItems } = useCalculations(orders);
+  const { handleSearch } = useSearchHandlers(setSearchQuery);
 
   return (
     <div className="wrapper">
@@ -751,6 +675,7 @@ const HomePage = () => {
         totalPrice={calculateTotalPrice()}
         totalItems={calculateTotalItems()}
       />
+      {!isMobile && <PresentationSlider />}
       <Categories chooseCategory={handleCategorySelection} />
       <SearchBar onSearch={handleSearch} />
       <Items items={filterItemsByCategory} onAdd={addItemToCart} />
