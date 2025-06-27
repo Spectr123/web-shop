@@ -146,10 +146,6 @@ header .basket-icon {
     }
 }
 
-.cart-badge.empty {
-    display: none;
-}
-
 header .shop-cart {
     position: fixed;
     top: 80px;
@@ -965,7 +961,7 @@ footer {
     }
 
     .basket-icon-container {
-        top: 15px;
+        top: 10px;
         right: 15px;
         padding: 8px;
     }
@@ -1018,17 +1014,6 @@ footer {
         margin: 5px 0;
         font-size: 16px;
         padding: 10px 15px;
-    }
-
-    .basket-icon-container {
-        position: fixed;
-        top: 15px;
-        right: 15px;
-        z-index: 1001;
-        background: rgba(255, 255, 255, 0.9);
-        border-radius: 50%;
-        padding: 8px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
     .presentation {
@@ -1085,46 +1070,6 @@ footer {
         z-index: 1000;
         display: flex;
         flex-direction: column;
-    }
-
-    .shop-cart-items {
-        flex: 1;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
-    }
-
-    .shop-cart .close-btn {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        width: 40px;
-        height: 40px;
-        background: rgba(255, 255, 255, 0.9);
-        border: none;
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 24px;
-        color: #333;
-        cursor: pointer;
-        z-index: 1001;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    }
-
-    .shop-cart .close-btn:hover {
-        background: rgba(255, 255, 255, 1);
-    }
-
-    .shop-cart-overlay {
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background: rgba(0, 0, 0, 0.5);
-        z-index: 999;
-        backdrop-filter: blur(5px);
     }
 
     .cart-header {

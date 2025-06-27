@@ -2,7 +2,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/autoplay";
 import { Link } from "react-router-dom";
-import Cart from "./Cart";
+import Basket from "./Basket";
 
 const Header = ({
   orders,
@@ -29,7 +29,7 @@ const Header = ({
           </li>
         </ul>
 
-        <Cart
+        <Basket
           orders={orders}
           onDelete={onDelete}
           onIncrease={onIncrease}

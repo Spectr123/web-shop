@@ -11,7 +11,6 @@ import useMobile from "../components/Hooks/useMobile";
 import { useFilterItemsByCategory } from "../components/functions/filterItemsByCategory";
 import { useCategoryHandlers } from "../components/functions/categoryHandlers";
 import { useCartHandlers } from "../components/functions/cartHandlers";
-import { useCalculations } from "../components/functions/calculations";
 import { useSearchHandlers } from "../components/functions/searchHandlers";
 
 const HomePage = () => {
@@ -662,7 +661,6 @@ const HomePage = () => {
   const { handleCategorySelection } = useCategoryHandlers(setSelectedCategory);
   const { removeItemFromCart, updateItemQuantity, addItemToCart } =
     useCartHandlers(setOrders);
-  const { calculateTotalPrice, calculateTotalItems } = useCalculations(orders);
   const { handleSearch } = useSearchHandlers(setSearchQuery);
 
   return (
@@ -672,8 +670,6 @@ const HomePage = () => {
         onDelete={removeItemFromCart}
         onIncrease={(id) => updateItemQuantity(id, "increase")}
         onDecrease={(id) => updateItemQuantity(id, "decrease")}
-        totalPrice={calculateTotalPrice()}
-        totalItems={calculateTotalItems()}
       />
       {!isMobile && <PresentationSlider />}
       <Categories chooseCategory={handleCategorySelection} />

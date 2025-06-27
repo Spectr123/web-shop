@@ -8,7 +8,7 @@ import CartTotal from "./Basket/CartTotal";
 import useCart from "./Hooks/useCart";
 import useClickOutside from "./Hooks/useClickOutSide";
 
-const Cart = ({ orders, onDelete, onIncrease, onDecrease }) => {
+const Basket = ({ orders, onDelete, onIncrease, onDecrease }) => {
   const [cartOpen, setCartOpen] = useState(false);
   const [isConfirmModalOpen, setIsConfirmModalOpen] = useState(false);
   const { cartRef, cartIconRef } = useClickOutside(cartOpen, setCartOpen);
@@ -89,4 +89,4 @@ const Cart = ({ orders, onDelete, onIncrease, onDecrease }) => {
   );
 };
 
-export default Cart;
+export default Basket;
