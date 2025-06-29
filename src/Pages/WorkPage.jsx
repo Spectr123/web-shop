@@ -35,14 +35,55 @@ const WorkPage = () => {
   const validateForm = () => {
     const newErrors = {};
 
-    if (!formData.name.trim()) newErrors.name = "Имя обязательно";
-    if (!formData.phone.trim()) newErrors.phone = "Телефон обязателен";
-    else if (!/^[+]?[0-9\s\-()]{10,}$/.test(formData.phone))
-      newErrors.phone = "Неверный формат телефона";
-    if (!formData.email.trim()) newErrors.email = "Email обязателен";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+    // Валидация имени
+    if (!formData.name.trim()) {
+      newErrors.name = "Имя обязательно";
+    } else if (formData.name.trim().length < 2) {
+      newErrors.name = "Имя должно содержать не менее 2 символов";
+    } else if (formData.name.trim().length > 50) {
+      newErrors.name = "Имя не должно превышать 50 символов";
+    } else if (!/^[а-яёА-ЯЁa-zA-Z\s-]+$/.test(formData.name.trim())) {
+      newErrors.name = "Имя может содержать только буквы, пробелы и дефисы";
+    }
+
+    // Валидация телефона
+    if (!formData.phone.trim()) {
+      newErrors.phone = "Телефон обязателен";
+    } else {
+      const phoneClean = formData.phone.replace(/[\s\-()]/g, '');
+      if (!/^[+]?[0-9]{10,15}$/.test(phoneClean)) {
+        newErrors.phone = "Неверный формат телефона (10-15 цифр)";
+      } else if (phoneClean.length < 10) {
+        newErrors.phone = "Телефон должен содержать не менее 10 цифр";
+      }
+    }
+
+    // Валидация email
+    if (!formData.email.trim()) {
+      newErrors.email = "Email обязателен";
+    } else if (formData.email.length > 254) {
+      newErrors.email = "Email слишком длинный";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
       newErrors.email = "Неверный формат email";
-    if (!formData.resume) newErrors.resume = "Резюме обязательно";
+    } else if (formData.email.includes('..')) {
+      newErrors.email = "Email не может содержать две точки подряд";
+    }
+
+    // Валидация файла резюме
+    if (!formData.resume) {
+      newErrors.resume = "Резюме обязательно";
+    } else {
+      const allowedTypes = ['application/pdf', 'application/msword', 'application/vnd.openxmlformats-officedocument.wordprocessingml.document'];
+      const maxSize = 5 * 1024 * 1024; 
+      
+      if (!allowedTypes.includes(formData.resume.type)) {
+        newErrors.resume = "Разрешены только файлы PDF, DOC, DOCX";
+      } else if (formData.resume.size > maxSize) {
+        newErrors.resume = "Размер файла не должен превышать 5MB";
+      } else if (formData.resume.size === 0) {
+        newErrors.resume = "Файл поврежден или пустой";
+      }
+    }
 
     return newErrors;
   };
